@@ -36,8 +36,6 @@
 - Dev Ops
 - etc...
 
-### Arquitectura de Internet 
-![img](http://www.justinrominedesign.com/images/internet.png)
 
 ## Front-end
 ### HTML

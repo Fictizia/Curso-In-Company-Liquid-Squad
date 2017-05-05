@@ -20,7 +20,7 @@ Teoría y Recursos
 Teoría | Recursos | Fecha
 ------------ | ------------- | -------------
 [Clase 1](teoria/clase1.md)	| [Clase 1](recursos/clase1.md) | Miércoles, 03/05/2017
-Clase 2	| Clase 2 | Viernes, 05/05/2017
+[Clase 2](teoria/clase2.md) | [Clase 2](recursos/clase2.md) | Viernes, 05/05/2017
 Clase 3	| Clase 3 | Lunes, 08/05/2017
 Clase 4	| Clase 4 | Miércoles, 10/05/2017
 Clase 5	| Clase 5 | Miércoles, 17/05/2017

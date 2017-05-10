@@ -1,10 +1,10 @@
-    var trenesOperativos = 3;
-    var totalTrenes = 8;
+var trenesOperativos = 3;
+var totalTrenes = 8;
 
-    function estadoDetalle () {
-    	var numeroTren = 1;
-    	while(numeroTren <= totalTrenes) {
-    		console.log("El tren " + numeroTren + " esta " + (numeroTren <= trenesOperativos ? "funcionando" : "parado"));
-    		numeroTren++
-    	};
-    };
+function estadoDetalle () {
+  var numeroTren = 1;
+  do {
+    console.log("El tren " + numeroTren + " esta " + (numeroTren <= trenesOperativos ? "funcionando" : "parado"));
+    numeroTren++
+  } while (numeroTren <= totalTrenes);
+};

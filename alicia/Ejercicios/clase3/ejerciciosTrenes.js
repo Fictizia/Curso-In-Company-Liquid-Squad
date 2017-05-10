@@ -3,8 +3,7 @@ var totalTrenes = 8;
 
 function estadoDetalle () {
   var numeroTren = 1;
-  do {
-    console.log("El tren " + numeroTren + " esta " + (numeroTren <= trenesOperativos ? "funcionando" : "parado"));
-    numeroTren++
-  } while (numeroTren <= totalTrenes);
+  for (var i = 0; i < totalTrenes; i++) {
+	  console.log("El tren " + i + " esta " + (i <= trenesOperativos ? "funcionando" : "parado"));
+  }
 };

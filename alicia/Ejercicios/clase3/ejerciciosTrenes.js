@@ -1,9 +1,13 @@
 var trenesOperativos = 3;
-var totalTrenes = 8;
+var totalTrenes = 10;
 
 function estadoDetalle () {
-  var numeroTren = 1;
-  for (var i = 0; i < totalTrenes; i++) {
-	  console.log("El tren " + i + " esta " + (i <= trenesOperativos ? "funcionando" : "parado"));
+  for (var i = 1; i <= totalTrenes; i++) {
+	  let extraInfo = "";
+	  if (i === 10){
+		  extraInfo += ". Info: servicio nocturno";
+	  }
+	  let info = "El tren " + i + " esta " + (i <= trenesOperativos ? "funcionando" : "parado");
+	  console.log(info + extraInfo);
   }
 };

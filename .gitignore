@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-/private
-=======
 # Logs
 logs
 *.log
@@ -41,4 +38,3 @@ jspm_packages
 
 # webstorm Directory based project format
 .idea/*
->>>>>>> 3a7c75d9ecc0d67adcc6934a608e026700d57a33

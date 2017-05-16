@@ -14,7 +14,7 @@ function estadoDetalle () {
 
   for (var i = 1; i <= totalTrenes; i++) {
 	  let extraInfo = "";
-	  if (i === 10){
+	  if (i === 10 || i === 12){
 		  extraInfo += ". Info: servicio nocturno";
 	  }
 	  let info = "El tren " + i + " esta " + (i <= trenesOperativos ? "funcionando" : "parado");

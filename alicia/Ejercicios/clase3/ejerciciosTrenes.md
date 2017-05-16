@@ -184,3 +184,107 @@ function estadoDetalle () {
   }
 };
 ```
+
+
+**8 -** Hagamos una lista de pasajeros efectiva usando Arrays e imprimamos cada pasajero de la lista y su número de asiento (basado en el orden del índice).
+*Nota: El primer asiento del tren es el 1 y no el 0.*
+
+```javascript
+var seats = [
+	'Alicia Gutierrez',
+	'Alfonso Gómez',
+	'Luis Navarro',
+	'Óscar Garcia',
+	'Andrés Fernández',
+	'Lucía Mellado'
+];
+
+function printPassengers(seats){
+	for (var i = 0; i < seats.length; i++) {
+		console.log('El pasajero ' + seats[i] + ' tiene reservado el asiento ' + (i+1));
+	}
+}
+```
+
+- Respuesta esperada (consola):
+```
+	El pasajero Alicia Gutierrez tiene reservado el asiento 1
+	El pasajero Alfonso Gomez tiene reservado el asiento 2
+	El pasajero Luis Navarro tiene reservado el asiento 3
+	El pasajero Oscar Garcia tiene reservado el asiento 4
+	El pasajero Andres Fernandez tiene reservado el asiento 5
+	El pasajero Lucia Mellado tiene reservado el asiento 6
+```
+
+
+**9 -** Necesitamos una función para agregar y otra para borrar pasajeros de la lista.
+*Nota: Pensemos que a la larga pueden existir más listas.*
+
+```javascript
+var seats = [
+	'Alicia Gutierrez',
+	'Alfonso Gómez',
+	'Luis Navarro',
+	'Óscar Garcia',
+	'Andrés Fernández',
+	'Lucía Mellado'
+];
+
+function printPassengers(seats){
+	for (var i = 0; i < seats.length; i++) {
+		console.log('El pasajero ' + seats[i] + ' tiene reservado el asiento ' + (i+1));
+	}
+
+	return seats;
+}
+
+function addPassenger(seats, name) {
+	seats.push(name);
+	return seats;
+}
+
+function deletePassengerByName(seats, name){
+	const index = seats.indexOf(name);
+	return deletePassengerByIndex(index);
+}
+
+function deletePassengerByIndex(seats, index){
+	if (index > -1) {
+    seats.splice(index, 1);
+	}
+	return seats;
+}
+
+function deletePassengerBySeatNumber(seats, seatNumber){
+	const index = seatNumber -1;
+	if (index > -1) {
+    seats.splice(index, 1);
+	}
+	return seats;
+}
+```
+
+
+**10 -** La compañía de trenes ha decidido que los viajeros podrán reservar el asiento asignado, pero quiere evitar que los pasajeros cambien de asiento constantemente cuando se anula un o varios billetes.
+*Nota: Al borrar en el ejercicio anterior las posiciones de los pasajeros cambiaban y los billetes quedaban desactualizados.*
+
+```javascript
+  // Tu solución
+```
+
+
+**11 -** Una de las vías principales esta en obras. Así que nuestra compañía decidió usar antiguas vías para hacer transbordos directos entre las estaciones afectadas.
+
+Nuestra misión es añadir el tiempo estimado en los billetes para las estaciones afectadas Tetuán,
+Moncloa y Hortaleza. Es necesario incluir un texto informativo y el nombre del usuario también en el billete.
+
+*Nota: Intenta utilizar Closures*
+
+Info:
+	- Tetuán (12)
+  - Moncloa (19)
+  - Hortaleza (21)
+
+```javascript
+  // Tu solución
+```

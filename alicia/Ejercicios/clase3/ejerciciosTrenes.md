@@ -269,7 +269,47 @@ function deletePassengerBySeatNumber(seats, seatNumber){
 *Nota: Al borrar en el ejercicio anterior las posiciones de los pasajeros cambiaban y los billetes quedaban desactualizados.*
 
 ```javascript
-  // Tu solución
+var seats = [
+	'Alicia Gutierrez',
+	'Alfonso Gómez',
+	'Luis Navarro',
+	'Óscar Garcia',
+	'Andrés Fernández',
+	'Lucía Mellado'
+];
+
+function printPassengers(seats){
+	for (var i = 0; i < seats.length; i++) {
+		console.log('El pasajero ' + seats[i] + ' tiene reservado el asiento ' + (i+1));
+	}
+
+	return seats;
+}
+
+function addPassenger(seats, name) {
+	seats.push(name);
+	return seats;
+}
+
+function deletePassengerByName(seats, name){
+	const index = seats.indexOf(name);
+	return deletePassengerByIndex(index);
+}
+
+function deletePassengerByIndex(seats, index){
+	if (index > -1) {
+    delete seats[index];
+	}
+	return seats;
+}
+
+function deletePassengerBySeatNumber(seats, seatNumber){
+	const index = seatNumber -1;
+	if (index > -1) {
+    seats.splice(index, 1);
+	}
+	return seats;
+}
 ```
 
 

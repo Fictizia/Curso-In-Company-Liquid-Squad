@@ -63,7 +63,7 @@ function deletePassengerByName(seats, name){
 
 function deletePassengerByIndex(seats, index){
 	if (index > -1) {
-    seats.splice(index, 1);
+    delete seats[index];
 	}
 	return seats;
 }

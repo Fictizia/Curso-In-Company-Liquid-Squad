@@ -72,3 +72,36 @@ function deletePassengerBySeatNumber(seats, seatNumber){
 	const index = seatNumber -1;
 	return deletePassengerByIndex(index);
 }
+
+function getWarnings(delays){
+	let warnings = ""
+	Object.keys(delays).map(function(station, index) {
+    var time = delays[station];
+    warnings += "Por obras, la estación " + station + " tardará "
+		+ time + "minutos.\n";
+	});
+	return warnings;
+}
+
+function printPassengerWarning(delays){
+	const warnings = getWarnings(delays);
+
+	return function (name, seat){
+		console.log('Pasajero ' + name + ', asiento ' + seat + '.\nAVISOS:\n'+ warnings);
+	}
+}
+
+function printPassengersTickets(seats){
+
+	const delays = {
+		Tetuan: 12,
+		Moncola: 19,
+		Hortaleza: 21
+	}
+
+	const printPassengerTicket = printPassengerWarning(delays);
+
+	for (var i = 0; i < seats.length; i++) {
+		printPassengerTicket(seats[i], i+1);
+	}
+}

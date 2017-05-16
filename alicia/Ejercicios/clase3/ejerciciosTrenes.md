@@ -257,10 +257,7 @@ function deletePassengerByIndex(seats, index){
 
 function deletePassengerBySeatNumber(seats, seatNumber){
 	const index = seatNumber -1;
-	if (index > -1) {
-    seats.splice(index, 1);
-	}
-	return seats;
+	return deletePassengerByIndex(index);
 }
 ```
 
@@ -305,10 +302,7 @@ function deletePassengerByIndex(seats, index){
 
 function deletePassengerBySeatNumber(seats, seatNumber){
 	const index = seatNumber -1;
-	if (index > -1) {
-    seats.splice(index, 1);
-	}
-	return seats;
+	return deletePassengerByIndex(index);
 }
 ```
 

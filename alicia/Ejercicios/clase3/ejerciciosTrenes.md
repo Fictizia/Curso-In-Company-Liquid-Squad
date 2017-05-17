@@ -291,7 +291,7 @@ function addPassenger(seats, name) {
 		if(seats[i] === undefined){
 			seats[i] = name;
 			added = true;
-			continue;
+			break;
 		}
 	}
 	if(!added){
@@ -357,7 +357,7 @@ function addPassenger(seats, name) {
 		if(seats[i] === undefined){
 			seats[i] = name;
 			added = true;
-			continue;
+			break;
 		}
 	}
 	if(!added){

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <script>
+
+
+    var trenesOperativos = 5;
+    var totalTrenes = 12;
+    var day = new Date().getDay();
+    //var day = 6;
+
+    var pasajeros = ['Alicia Gutierrez', 'Alfonso Gomez', 'Luis Navarro', 'Oscar Garcia', 'Andres Fernandez', 'Lucia Mellado' ]
+
+    function estadoDetalle () {
+
+      switch (trenesOperativos) {
+        case 0:
+          console.log("Todos los trenes están parados");
+          break;
+        case 10:
+          console.log("Todos los trenes están operativos");
+          break;
+        default:
+          for (var i = 1; i <= totalTrenes; i++) {
+            if (i === 10 || i === 12) {
+              console.log("El tren " + i + " esta " + (i <= trenesOperativos ? "funcionando" : "parado") + " y es nocturno");
+            }
+            else {
+              console.log("El tren " + i + " esta " + (i <= trenesOperativos ? "funcionando" : "parado"));
+            }
+          }
+      }
+      if (day === 6) {
+        console.log('El tren ' + 13 + ' esta ' + "funcionando y es nocturno");
+      }
+    };
+    estadoDetalle();
+
+    function listarPasajeros() {
+      var numPasajeros = pasajeros.length;
+
+      for (var i = 0; i < 7; i++) {
+        console.log('El pasajero ' + pasajeros[i] + ' tiene reservado el asiento ' + Number(i+1));
+      }
+
+    };
+    listarPasajeros();
+
+  </script>
+</head>
+<body>
+
+</body>
+</html>

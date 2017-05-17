@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <script>
+
+
+    var trenesOperativos = 10;
+    var totalTrenes = 10;
+
+    function estadoDetalle () {
+
+      switch (trenesOperativos) {
+        case 0:
+          console.log("Todos los trenes están parados");
+          break;
+        case 10:
+          console.log("Todos los trenes están operativos");
+          break;
+        default:
+          for (var i = 1; i < 11; i++) {
+            if (i != 10) {
+              console.log("El tren " + i + " esta " + (i <= trenesOperativos ? "funcionando" : "parado"));
+            }
+            else {
+              console.log("El tren " + i + " esta " + (i <= trenesOperativos ? "funcionando" : "parado") + " y es nocturno");
+            }
+          }
+      }
+
+    };
+    estadoDetalle();
+
+  </script>
+</head>
+<body>
+
+</body>
+</html>

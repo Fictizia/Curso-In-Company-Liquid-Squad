@@ -59,9 +59,7 @@
       }
       console.log('------------------------------------------');
       console.log('Nuevo listado de pasajeros :');
-      for (i = 0; i < numPasajeros; i++) {
-        console.log('El pasajero ' + pasajeros[i] + ' tiene reservado el asiento ' + Number(i+1));
-      }
+      listarPasajeros();
     }
 
     function anadirPasajero() {
@@ -71,9 +69,7 @@
       console.log('------------------------------------------');
       console.log('Nuevo listado de pasajeros :');
       var numPasajeros = pasajeros.length;
-      for (var i = 0; i < numPasajeros; i++) {
-        console.log('El pasajero ' + pasajeros[i] + ' tiene reservado el asiento ' + Number(i+1));
-      }
+      listarPasajeros();
     }
 
 

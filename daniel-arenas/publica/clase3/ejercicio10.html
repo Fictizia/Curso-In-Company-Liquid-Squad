@@ -9,7 +9,7 @@
     var trenesOperativos = 5;
     var totalTrenes = 12;
     var day = new Date().getDay();
-    //var day = 6;
+    //var day = 6; // sabado
 
     var pasajeros = ['Alicia Gutierrez', 'Alfonso Gomez', 'Luis Navarro', 'Oscar Garcia', 'Andres Fernandez', 'Lucia Mellado' ]
 
@@ -39,9 +39,13 @@
     estadoDetalle();
 
     function listarPasajeros() {
-      var numPasajeros = pasajeros.length;
-      for (var i = 0; i < numPasajeros; i++) {
-        console.log('El pasajero ' + pasajeros[i] + ' tiene reservado el asiento ' + Number(i+1));
+      for (i = 0; i < numPasajeros; i++) {
+        if (pasajeros[i] !== '') {
+          console.log('El pasajero ' + pasajeros[i] + ' tiene reservado el asiento ' + Number(i+1));
+        }
+        else {
+          console.log('El asiento ' + Number(i+1) + ' está vacio');
+        }
       }
 
     }
@@ -60,14 +64,7 @@
       }
       console.log('------------------------------------------');
       console.log('Nuevo listado de pasajeros :');
-      for (i = 0; i < numPasajeros; i++) {
-        if (pasajeros[i] !== '') {
-          console.log('El pasajero ' + pasajeros[i] + ' tiene reservado el asiento ' + Number(i+1));
-        }
-        else {
-          console.log('El asiento ' + Number(i+1) + ' está vacio');
-        }
-      }
+      listarPasajeros();
     }
 
     function anadirPasajero() {
@@ -89,14 +86,7 @@
       console.log('------------------------------------------');
       console.log('Nuevo listado de pasajeros :');
       numPasajeros = pasajeros.length;
-      for (i = 0; i < numPasajeros; i++) {
-        if (pasajeros[i] !== '') {
-          console.log('El pasajero ' + pasajeros[i] + ' tiene reservado el asiento ' + Number(i+1));
-        }
-        else {
-          console.log('El asiento ' + Number(i+1) + ' está vacio');
-        }
-      }
+      listarPasajeros();
     }
 
   </script>

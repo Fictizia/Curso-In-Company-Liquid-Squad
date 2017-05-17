@@ -277,14 +277,26 @@ var seats = [
 
 function printPassengers(seats){
 	for (var i = 0; i < seats.length; i++) {
-		console.log('El pasajero ' + seats[i] + ' tiene reservado el asiento ' + (i+1));
+		if(seats[i] !== undefined){
+		  console.log('El pasajero ' + seats[i] + ' tiene reservado el asiento ' + (i+1));
+		}
 	}
 
 	return seats;
 }
 
 function addPassenger(seats, name) {
-	seats.push(name);
+	let added = false;
+	for (var i = 0; i < seats.length; i++) {
+		if(seats[i] === undefined){
+			seats[i] = name;
+			added = true;
+			continue;
+		}
+	}
+	if(!added){
+		seats.push(name);
+	}
 	return seats;
 }
 
@@ -294,7 +306,7 @@ function deletePassengerByName(seats, name){
 }
 
 function deletePassengerByIndex(seats, index){
-	if (index > -1) {
+	if (index >= 0 && index < seats.length) {
     delete seats[index];
 	}
 	return seats;
@@ -331,14 +343,26 @@ var seats = [
 
 function printPassengers(seats){
 	for (var i = 0; i < seats.length; i++) {
-		console.log('El pasajero ' + seats[i] + ' tiene reservado el asiento ' + (i+1));
+		if(seats[i] !== undefined){
+		  console.log('El pasajero ' + seats[i] + ' tiene reservado el asiento ' + (i+1));
+		}
 	}
 
 	return seats;
 }
 
 function addPassenger(seats, name) {
-	seats.push(name);
+	let added = false;
+	for (var i = 0; i < seats.length; i++) {
+		if(seats[i] === undefined){
+			seats[i] = name;
+			added = true;
+			continue;
+		}
+	}
+	if(!added){
+		seats.push(name);
+	}
 	return seats;
 }
 
@@ -348,7 +372,7 @@ function deletePassengerByName(seats, name){
 }
 
 function deletePassengerByIndex(seats, index){
-	if (index > -1) {
+	if (index >= 0 && index < seats.length) {
     delete seats[index];
 	}
 	return seats;
@@ -388,7 +412,9 @@ function printPassengersTickets(seats){
 	const printPassengerTicket = printPassengerWarning(delays);
 
 	for (var i = 0; i < seats.length; i++) {
-		printPassengerTicket(seats[i], i+1);
+		if(seats[i] !== undefined){
+			printPassengerTicket(seats[i], i+1);
+		}
 	}
 }
 ```

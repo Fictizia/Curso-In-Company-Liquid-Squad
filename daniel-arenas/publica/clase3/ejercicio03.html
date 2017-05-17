@@ -9,13 +9,12 @@
     var trenesOperativos = 3;
     var totalTrenes = 8;
 
-    function estadoDetalle () {
+    (function estadoDetalle () {
 
     	for (var i = 1; i < 9; i++) {
     		console.log("El tren " + i + " esta " + (i <= trenesOperativos ? "funcionando" : "parado"));
     	}
-    }
-    estadoDetalle();
+    })();
 
   </script>
 </head>

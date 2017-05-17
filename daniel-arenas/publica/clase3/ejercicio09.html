@@ -13,7 +13,7 @@
 
     var pasajeros = ['Alicia Gutierrez', 'Alfonso Gomez', 'Luis Navarro', 'Oscar Garcia', 'Andres Fernandez', 'Lucia Mellado' ]
 
-    function estadoDetalle () {
+    (function estadoDetalle () {
 
       switch (trenesOperativos) {
         case 0:
@@ -35,17 +35,15 @@
       if (day === 6) {
         console.log('El tren ' + 13 + ' esta ' + "funcionando y es nocturno");
       }
-    }
-    estadoDetalle();
+    })();
 
-    function listarPasajeros() {
+    (function listarPasajeros() {
       var numPasajeros = pasajeros.length;
       for (var i = 0; i < numPasajeros; i++) {
         console.log('El pasajero ' + pasajeros[i] + ' tiene reservado el asiento ' + Number(i+1));
       }
 
-    }
-    listarPasajeros();
+    })();
 
     function borrarPasajero() {
       var numPasajeros = pasajeros.length;

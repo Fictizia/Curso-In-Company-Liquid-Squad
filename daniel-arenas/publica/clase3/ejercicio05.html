@@ -9,7 +9,7 @@
     var trenesOperativos = 10;
     var totalTrenes = 10;
 
-    function estadoDetalle () {
+    (function estadoDetalle () {
 
       switch (trenesOperativos) {
         case 0:
@@ -29,8 +29,7 @@
           }
       }
 
-    }
-    estadoDetalle();
+    })();
 
   </script>
 </head>

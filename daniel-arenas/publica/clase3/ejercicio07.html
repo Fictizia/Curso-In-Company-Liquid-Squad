@@ -11,7 +11,7 @@
     var day = new Date().getDay();
     //var day = 6;
 
-    function estadoDetalle () {
+    (function estadoDetalle () {
 
       switch (trenesOperativos) {
         case 0:
@@ -33,8 +33,7 @@
       if (day === 6) {
         console.log('El tren ' + 13 + ' esta ' + "funcionando y es nocturno");
       }
-    }
-    estadoDetalle();
+    })();
 
   </script>
 </head>

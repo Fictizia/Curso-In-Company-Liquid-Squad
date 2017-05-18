@@ -1,0 +1,16 @@
+    var trenesOperativos = 3;
+    var totalTrenes = 15;
+
+    function estadoDetalle () {
+    	var numeroTren = 1;
+    	for (i=1; i <= totalTrenes; i++) {
+        if (numeroTren === 10 ){
+    		console.log("El tren nocturno " + numeroTren + " esta " + (numeroTren <= trenesOperativos ? "funcionando" : "parado"));        }
+        else{
+    		console.log("El tren " + numeroTren + " esta " + (numeroTren <= trenesOperativos ? "funcionando" : "parado"));
+        }	
+    		numeroTren++ 
+      }
+    };
+
+estadoDetalle();

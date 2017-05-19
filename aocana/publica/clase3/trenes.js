@@ -93,6 +93,7 @@ function calculador(x) {
   };
 }
 
+//variables último ejercicio
 var tetuan = calculador(12); //Closure
 var moncloa = calculador(19); //Closure
 var hortaleza = calculador(21); //Closure

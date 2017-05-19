@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<script type="text/javascript">
+	
+// 1 - Imprimimos por consola el estado de cada tren en movimiento de manera individualizada... usando while.
+
+	var trenesOperativos = 3;
+    var totalTrenes = 8;
+
+    function estadoDetalle1 () {
+    	var numeroTren = 1;
+    	while(numeroTren <= totalTrenes) {
+    		console.log("El tren " + numeroTren + " está " + (numeroTren <= trenesOperativos ? "funcionando" : "parado"));	
+    		numeroTren++
+    	};
+    };
+
+
+    // 2 - Imprimimos por consola el estado de cada tren en movimiento de manera individualizada... usando Do... While.
+
+    var trenesOperativos = 3;
+    var totalTrenes = 8;
+
+    function estadoDetall2 () {
+    	var numeroTren = 1;
+    	do { console.log("El tren " + numeroTren + " está " + (numeroTren <= trenesOperativos ? "funcionando" : "parado"));	
+    		numeroTren++
+    	}while(numeroTren <= totalTrenes);
+    };
+
+    // 3 - Imprimimos por consola el estado de cada tren en movimiento de manera individualizada... usando for.
+
+    var trenesOperativos = 3;
+    var totalTrenes = 8;
+
+    function estadoDetalle3 () {
+        for(var numeroTren =1;numeroTren <= totalTrenes; numeroTren++) {
+            console.log("El tren " + numeroTren + " está " + (numeroTren <= trenesOperativos ? " funcionando " : " parado"));
+        }
+    }
+
+    // 4 - #compliquemos! Servicio nocturno en el tren 10. Nota: Frente al ejercicio anterior, en este caso queremos que siempre que hablemos del tren 10 se especifique que es nocturno. Independientemente de si esta parado o funcionando.
+
+    var trenesOperativos = 3;
+    var trenesDiurnos = 8;
+    var trenNocturno = 10;
+
+    function estadoDetalle4 () {
+        for(var numeroTren = 1; numeroTren <= trenesDiurnos; numeroTren++) {
+            console.log("El tren " + numeroTren + " está " + (numeroTren <= trenesOperativos ? " funcionando " : " parado"));
+        }
+            console.log("El tren " + trenNocturno + " es nocturno");
+    }
+
+    // 5 - ¡Refactoricemos! ¿Y si todos los trenes están en las vías funcionando o por el contrario si ninguno de los trenes esta funcionando?.
+    
+    var trenesOperativos = 3;
+    var totalTrenes = 8;
+
+    function estadoDetalle5 () {
+        if(trenesOperativos === totalTrenes) {
+            console.log("Todos los trenes están operativos");
+        }else if(trenesOperativos === 0) {
+            console.log("Todos los trenes están parados");
+        }else{
+            for(var numeroTren =1;numeroTren <= totalTrenes; numeroTren++) {
+            console.log("El tren " + numeroTren + " está " + (numeroTren <= trenesOperativos ? " funcionando " : " parado"));
+            }
+        }
+    }
+
+
+    // 6 - El servicio nocturno se queda un poco corto y necesitamos añadir un nuevo tren de refuerzo. El 12 será destinado a cubrir esta necesidad, exactamente igual que el 10 anteriormente.
+
+    var trenesOperativos = 3;
+    var trenesDiurnos = 8;
+    var trenNocturno = 10;
+    var trenNocturno2 = 12;
+
+    function estadoDetalle6 () {
+        var numeroTren = 1;
+         for(var numeroTren = 1; numeroTren <= trenesDiurnos; numeroTren++) {
+            console.log("El tren " + numeroTren + " está " + (numeroTren <= trenesOperativos ? " funcionando " : " parado"));
+        }
+         console.log("Los trenes " + trenNocturno + " y " + trenNocturno2 + " son nocturnos");
+    }
+
+    //     7 - El departamento de Marketing ha decidido lanzar un nuevo servicio los sábados. El "tren fiestero" será un tren adaptado a un público más intrépido y funcionará solo en los sábados. Este tren será el número 13.
+
+    // NOTA: EL TREN 13 SOLO FUNCIONA LOS SÁBADOS. Es necesario incluir el día de la semana en tu código
+
+    var trenesOperativos = 3;
+    var totalTrenes = 13;
+    var trenesDiurnos = 8;
+    var treneNocturno = 10;
+    var treneNocturno2 = 12;
+    var trenApoyo = 13;
+
+    var semana = new Array("Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado");
+    var fechaActual = new Date();
+    var diaSemana = semana[fechaActual.getDay()];
+
+    function estadoDetalle7 () {
+        for(var numeroTren = 1; numeroTren <= trenesDiurnos; numeroTren++) {
+            console.log("El tren " + numeroTren + " está " + (numeroTren <= trenesOperativos ? " funcionando " : " parado"));
+        }
+        console.log("El tren " + treneNocturno + " es nocturno");
+        console.log("El tren " + treneNocturno2 + " es nocturno");
+
+        if (diaSemana === "Sábado") {
+            console.log("Es " + diaSemana + " y el tren " + trenApoyo + " 'tren fiestero' está funcionando");
+        } else {
+            console.log("Es " + diaSemana + " y el tren " + trenApoyo + " 'tren fiestero' hoy está parado");
+        }
+    }
+
+    // 8 - Hagamos una lista de pasajeros efectiva usando Arrays e imprimamos cada pasajero de la lista y su número de asiento (basado en el orden del índice). Nota: El primer asiento del tren es el 1 y no el 0.
+
+    var pasajeros = new Array ("Pablo","Juan","María","Carmen","Pedro","Raquel");
+    var asientos = 1;
+    function estadoDetalle8 () {
+        for(var i = 0; i < pasajeros.length; i++) {
+            console.log("El pasajero con nombre " + pasajeros[i] + " tiene el asiento " + asientos++);  
+        }
+    }
+
+    // 9 - Necesitamos una función para agregar y otra para borrar pasajeros de la lista. Nota: Pensemos que a la larga pueden existir más listas.
+
+    var pasajeros = new Array ("Pablo","Juan","María","Carmen","Pedro","Raquel");
+
+    function estadoDetalleAñadir (lista, element) {
+        console.log(lista.unshift(element));
+    }
+
+    function estadoDetalleEliminar (lista) {
+        console.log(lista.pop());
+    }
+
+
+    // 10 - La compañía de trenes ha decidido que los viajeros podrán reservar el asiento asignado, pero quiere evitar que los pasajeros cambien de asiento constantemente cuando se anula un o varios billetes. Nota: Al borrar en el ejercicio anterior las posiciones de los pasajeros cambiaban y los billetes quedaban desactualizados.
+
+    var pasajeros = new Array ("Pablo","Juan","María","Carmen","Pedro","Raquel");
+    function estadoDetalle10 () {
+        var asientos = 1;
+        for(var i = 0; i < pasajeros.length; i++) {
+            console.log("El pasajero con nombre " + pasajeros[i] + " tiene el asiento " + asientos++);  
+        }
+    }
+    function estadoDetalleEliminar (lista, name) {
+            console.log(delete pasajeros[name]);
+        }
+
+        function estadoDetalleAñadir (lista, name){
+        var add = false;
+        for(var i = 0; i < pasajeros.length; i++) {
+            if(pasajeros[i] === undefined) {
+                pasajeros[i] = name;
+                var add = true;
+                break;
+            }
+        }if (!add){
+            pasajeros.push(name);
+        }
+    }
+
+
+//     11 - Una de las vías principales esta en obras. Así que nuestra compañía decidió usar antiguas vías para hacer transbordos directos entre las estaciones afectadas.
+
+// Nuestra Misión es añadir el tiempo estimado en los billetes para las estaciones afectadas Tetuán, Moncloa y Hortaleza. Es necesario incluir un texto informativo y el nombre del usuario también en el billete.
+
+// Nota: Intenta utilizar Closures
+
+// Info: - Tetuán (12)
+// Moncloa (19)
+// Hortaleza (21)
+
+    var pasajeros = new Array ("Pablo","Juan","María","Carmen","Pedro","Raquel");
+    function estadoDetalle10 () {
+        var asientos = 1;
+        
+        for(var i = 0; i < pasajeros.length; i++) {
+            console.log("El pasajero con nombre " + pasajeros[i] + " tiene el asiento " + asientos++);
+            tiempoEstacion();
+        }
+    }
+    var estaciones = {
+            Tetuan: 12,
+            Moncloa: 19,
+            Hortaleza: 21
+        }
+    function tiempoEstacion () {
+            for(var estacion in estaciones) {
+                console.log("La estación " + estacion + " tiene un retraso de " + estaciones[estacion] + " minutos");
+            }
+            
+        }
+        
+
+
+
+
+</script>
+<body>
+
+	
+
+</body>
+</html>

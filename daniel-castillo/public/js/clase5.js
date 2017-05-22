@@ -6,7 +6,8 @@
 // Leer sobre bubbling de eventos
 
 
-var teachersArray = Array.prototype.slice.call(document.getElementById('teachersList').childNodes)
+// var teachersArray = Array.prototype.slice.call(document.getElementById('teachersList').childNodes)
+var teachersArray = Array.from(document.getElementById('teachersList').childNodes)
 
 var teachersArrayOrder = teachersArray.sort(function(a, b) {
 	var a = a.getElementsByTagName('h4')[0].innerHTML

@@ -9,15 +9,14 @@
 var teachersArray = Array.prototype.slice.call(document.getElementById('teachersList').childNodes)
 
 var teachersArrayOrder = teachersArray.sort(function(a, b) {
-	var a = a.getElementsByTagName('img')[0].getAttribute('src')
-	var b = b.getElementsByTagName('img')[0].getAttribute('src')
- 	return a < b ? -1 : 1
+	var a = a.getElementsByTagName('h4')[0].innerHTML
+	var b = b.getElementsByTagName('h4')[0].innerHTML
+ 	return a.localeCompare(b)
 })
 
 document.getElementById('teachersList').innerHTML = ''
 
 for (var i = 0; i <= teachersArrayOrder.length; i++) {
-
 	if(teachersArrayOrder[i] !== undefined)
 		document.getElementById('teachersList').appendChild(teachersArrayOrder[i])
 }

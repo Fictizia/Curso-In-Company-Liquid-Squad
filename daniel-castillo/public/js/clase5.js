@@ -59,7 +59,36 @@ trainingAreas.forEach(function(area) {
 console.log(markdown)
 
 
+// 3 - Hagamos la web del Metro más divertida.
+// Saca el estado actual de todas las líneas del metro de Madrid por consola.
+// https://www.metromadrid.es/es/index.html
 
+
+var lines = Array.from(document.getElementsByClassName('bloquet'))
+
+lines.forEach(function(line) {
+	var status = line.getElementsByTagName('a')[0].innerText
+	console.log(status)
+})
+
+
+// 4 - Diseña un script que sustituya todas las imágenes de las entradas 
+// de Tecnología del Mundo Today por imágenes dummy de gatitos.
+// http://www.elmundotoday.com/noticias/tecnologia/
+// https://placekitten.com/
+
+var images = Array.from(document.getElementsByTagName('img'))
+
+images.forEach(function(img) {
+	var width = img.clientWidth
+	var height = img.clientWidth
+	img.src = 'http://placekitten.com/g/' + width + '/' + height
+})
+
+
+// 5 - Diseña un script que agrupe todos los titulares, sus autores y categorias dentro de Genbeta:dev y 
+// luego vacíe el html para cargar una lista hecha por nosotros con la información previamente recolectada.
+// https://www.genbetadev.com/
 
 
 

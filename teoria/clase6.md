@@ -242,23 +242,19 @@ Soporte en cliente (librerías):
 
 ### Ejercicios
 
-**1 -** Sacar en el html la respuesta de [OMDB](http://omdbapi.com/) para la pelicula Hackers
 
-```javascript
-	// Tu solución
-```
-
-**2 -** Sacar en el html el tiempo meteorológico de Madrid, Barcelona y Valencia. 
+**1 -** Sacar en el html el tiempo meteorológico de Madrid, Barcelona y Valencia. 
 Nota: http://openweathermap.org te será de gran ayuda, busca la solución al error 401
 
-
 ```javascript
 	// Tu solución
 ```
 
-**3 -** Crea una web que nos permita ver los detalles almacenados en IMBD de una pelicula partiendo únicamente del título
-Recursos:
-- [OMDb API - The Open Movie Database](http://omdbapi.com/)
+
+**2 -** Crea una web que nos permita ver los detalles meteorológicos de una ciudad.
+Requisitos:
+- Usando un input y eventos.
+- Usando la API de openweathermap.
 
 ```javascript
 	// Tu solución

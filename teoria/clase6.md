@@ -281,6 +281,4 @@ Requisitos:
 - Usando un input y eventos.
 - Usando la API de openweathermap.
 
-```javascript
-	// Tu solución
-```
+[Solución](../otros/meteo.html)

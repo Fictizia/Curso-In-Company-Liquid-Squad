@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Meteo en la ciudad</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+
+    <style type="text/css">
+        html {
+            position: relative;
+            min-height: 100%;
+        }
+        body {
+            padding-top: 160px;
+            margin-bottom: 60px;
+        }
+        #no-encontrado {
+            margin-top: 100px;
+        }
+        #img-hombre {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        #img-cargando {
+            max-width: 200px;
+            display: block;
+            margin-top: 100px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .panel {
+            min-height: 380px;
+        }
+        #row-contenido {
+            margin-top: 30px;
+        }
+        #error-ajax {
+            display: none;
+        }
+        #campo-buscador {
+            width: 350px;
+        }
+        #cargando {
+            float: none;
+            margin: auto;
+            display: none;
+        }
+        .caratula-disco {
+            width: 130px;
+        }
+        .col-centered {
+            float: none;
+            margin: 0 auto;
+        }
+        .footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 40px;
+            background-color: #191414;
+        }
+        #owm-logo {
+            padding-top: 5px;
+            max-height: 27px;
+        }
+        .panel {
+            color: #fff;
+            background-color: #191414;
+            min-height: 0px;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div class="container">
+
+        <div class="alert alert-dismissible alert-danger" id="error-ajax">
+            <button type="button" class="close" data-dismiss="alert">x</button>
+            <strong>Oh Error!</strong> Error al cargar los datos de <a href="https://openweathermap.org/api" target="_blank" class="alert-link">Open Weather Map - </a>
+        </div>
+
+
+        <div class="row" id="row-buscador">
+            <div class="col-md-12" id="col-buscador">
+                <h3 class="text-center">El tiempo en tu ciudad</h3>
+                <div class="input-group col-centered" id="campo-buscador">
+                    <input type="text" id="nombre-ciudad" class="form-control" placeholder="Madrid, Barcelona...">
+                    <input type="text" id="api-key" class="form-control" placeholder="API Key...">
+                </div>
+            </div>
+        </div>
+
+        <div class="row" id="row-contenido">
+        </div>
+
+        <div class="row" id="cargando">
+            <div class="col-md-12 col-centered">
+                <img id="img-cargando" src="https://d13yacurqjgara.cloudfront.net/users/493970/screenshots/1691794/progress.gif">
+            </div>
+        </div>
+
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p class="text-muted">
+                <a href="https://developer.spotify.com/web-api/" target="_blank"><img id="owm-logo" src="https://openweathermap.org/themes/openweathermap/assets/vendor/owm/img/logo_OpenWeatherMap_orange.svg">
+                </a>
+            </p>
+        </div>
+    </footer>
+
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        function meteoCiudad(event) {
+
+            document.getElementById("row-contenido").style.display = 'none';
+            var apikey = document.getElementById('api-key').value.trim();
+
+            console.log("ApiKey", apikey);
+            if (event.keyCode === 13) {
+
+                if (apikey) {
+                    document.getElementById("cargando").style.display = 'block';
+                    var nombreCiudad = document.getElementById('nombre-ciudad').value.trim();
+                    var fullUrl = "http://api.openweathermap.org/data/2.5/weather?q=" + encodeURIComponent(nombreCiudad) + "&mode=json&lang=sp&units=metric&APPID=" + encodeURIComponent(apikey);
+
+                    peticionAJAX(fullUrl, function(datos) {
+                        console.log("datos:", datos);
+                        document.getElementById("row-contenido").style.display = 'inline';
+                        document.getElementById("cargando").style.display = 'none';
+                        var contenido = '<div class="panel panel-default"><div class="panel-body" data-id="' + datos.weather[0].id + '">';
+                        contenido += '<h4>' + datos.name + ', ' + datos.weather[0].description + '</h4>';
+                        contenido += '<hr>';
+                        contenido += '<p>Temperatura: ' + datos.main.temp + 'ºC</p>';
+                        contenido += '<p>Humedad: ' + datos.main.humidity + '%</p>';
+                        contenido += '<div class="puntuacion"><p>Viento: ' + datos.wind.speed + 'KM/h (' + datos.wind.deg + 'º)</p>';
+                        contenido += '<p>Latitud: ' + datos.coord.lat + '</p>';
+                        contenido += '<p>Logitud: ' + datos.coord.lon + '</p></div>';
+                        contenido += '</div></div>';
+                        document.getElementById("row-contenido").innerHTML = contenido;
+                    });
+                } else {
+
+                    document.getElementById("row-contenido").innerHTML = "<h4>No te olvides del apikey!</h4>";
+                    document.getElementById("row-contenido").style.display = 'block';
+                }
+            }
+        }
+
+        function peticionAJAX(url, cb) {
+            var xmlHttp = new XMLHttpRequest();
+            xmlHttp.onreadystatechange = function() {
+                if (xmlHttp.readyState === 4) {
+                    if (xmlHttp.status >= 100 && xmlHttp.status <= 300) {
+                        var datosCrudos = JSON.parse(xmlHttp.responseText);
+                        cb(datosCrudos);
+                    } else if (xmlHttp.status >= 400 && xmlHttp.status <= 600) {
+                        document.getElementById("cargando").style.display = 'none';
+                        document.getElementById("error-ajax").style.display = 'block';
+                        document.getElementById("row-contenido").innerHTML = '<img src="http://www.404notfound.fr/assets/images/pages/img/androiddev101.jpg">';
+                        console.error("ERROR! 404", JSON.parse(xmlHttp.responseText));
+                    }
+                }
+            };
+            xmlHttp.open("GET", url, true);
+            xmlHttp.send();
+        }
+
+        document.getElementById('nombre-ciudad').addEventListener('keypress', meteoCiudad);
+    </script>
+</body>
+
+</html>

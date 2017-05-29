@@ -507,9 +507,43 @@ document.body.dispatchEvent(miEvento);
 
 **1 -** Reorganizar la [lista de profesores de Fictizia](http://www.fictizia.com/profesores/) por nombre y apellidos (alfabético)
 
+**Solución Parcial**
 ```javascript
-	// Tu solución
+	var profesoresData = "";
+	var profesores = Array.prototype.slice.call(document.querySelectorAll('#teachersList > li'));
+	
+	profesores.sort(function (a, b) {
+	    if (a.innerText < b.innerText)
+	        return -1;
+	    if (a.innerText > b.innerText)
+	        return 1;
+	    return 0;
+	});
+	
+	profesores.forEach(function(profesor){
+	  profesoresData += profesor.outerHTML;
+	})
+	
+	document.getElementById('teachersList').innerHTML = profesoresData;
 ```
+
+**Solución Total**
+```javascript
+	//@see: https://davidwalsh.name/sorting-strings-accented-characters
+	var profesoresData = "";
+	var profesores = Array.prototype.slice.call(document.querySelectorAll('#teachersList > li'));
+	
+	profesores.sort(function (a, b) {
+	    return a.innerText.localeCompare(b.innerText);
+	});
+	
+	profesores.forEach(function(profesor){
+	  profesoresData += profesor.outerHTML;
+	})
+	
+	document.getElementById('teachersList').innerHTML = profesoresData;
+```
+
 
 
 **2 -** Saca una lista de los [cursos disponibles en Fictizia](http://www.fictizia.com/) en las 4 areas de formación y conviertelo en Markdown. 
@@ -518,7 +552,30 @@ Características:
 - Cada curso debe contener el enlace al mismo y especificar el número de horas entre parentesis.
 
 ```javascript
-	// Tu solución
+	// Simular el Click (Opcional)
+	document.getElementById('web_Tab').click();
+	
+	var areas = document.querySelectorAll('#areas > section');
+	var markdown = "# Cursos de Fictizia\n\n";
+	
+	for (var i = 0; areas.length > i; i++) {
+	
+	    var area = areas[i].querySelectorAll('li > a');
+	    markdown += "## " + areas[i].querySelector('h2').innerText.trim() + "\n\n";
+	    markdown += "**Total de cursos: " + area.length + "**\n";
+	  
+	    for (var j = 0; area.length > j; j++) {
+	            var link = area[j].getAttribute("href");
+	            var horas = area[j].querySelector(".contextualInfo").innerText.trim();
+	                horas = horas.replace("Curso de ", "").replace("Workshop de ").replace("Master de ", "").replace("undefined", "");
+	            var titulo = area[j].querySelector("strong").innerText.trim();
+	            var curso = "- [" + titulo + " (" + horas + ")](" + link + ")\n";
+	            markdown += curso;
+	    }
+	    markdown += "\n\n"
+	}
+	
+	console.log(markdown);
 ```
 
 - Respuesta esperada (consola):
@@ -551,17 +608,72 @@ Características:
 - Saca el estado actual de todas las líneas del metro de Madrid por consola.
 
 ```javascript
-	// Tu solución
+	var lineas = document.querySelectorAll('.bloquet');
+	
+	for (var i = 0; i < lineas.length; i++) {
+	  var estado = lineas[i].querySelector('.circulacion > .txt > a');
+	  
+	  if(!estado) estado = lineas[i].querySelector('.circulacion > .r > a');
+	  
+	  if(estado) console.log(estado.innerText.trim());
+	  
+	}
 ```
 
 **4 -**  Diseña un script que sustituya todas las imágenes de las entradas de [Tecnología del Mundo Today](http://www.elmundotoday.com/noticias/tecnologia/) por [imágenes dummy de gatitos](https://placekitten.com/).
 
 ```javascript
-	// Tu solución
+		var imagenes = document.querySelectorAll('.td-module-thumb img');
+		var imagenesLog = [];
+		for(var i = 0; i < imagenes.length; i++){
+			var url = document.querySelectorAll('.td-module-thumb img')[i].src;
+			var ancho = document.querySelectorAll('.td-module-thumb img')[i].width;
+			var alto = document.querySelectorAll('.td-module-thumb img')[i].height;
+			var sustituto = "http://lorempixel.com/"+ancho+"/"+alto+"/cats";
+			var datos = [url, ancho, alto, sustituto]
+			imagenesLog.push(datos);
+			document.querySelectorAll('.td-module-thumb img')[i].src = sustituto;
+		}
 ```
 
 **5 -** Diseña un script que agrupe todos los titulares, sus autores y categorias dentro de [Genbeta:dev](http://www.genbetadev.com/) y luego vacíe el html para cargar una lista hecha por nosotros con la información previamente recolectada.
 
 ```javascript
-	// Tu solución
+	var datos = [];
+	var plantilla = "";
+	
+	for(var i = 0; i < document.querySelectorAll(".article-home-header a").length -1; i++){
+		var autor;
+		var titular;
+		var categorias;
+	
+		// Autor 
+		if(document.querySelectorAll(".article-author a")[i]){
+			autor = document.querySelectorAll(".article-author a")[i].innerHTML
+		} else {
+	 		autor = "Desconocido"
+		}
+	
+		// Titular
+		if(document.querySelectorAll(".article-home-header a")[i]){
+			titular = document.querySelectorAll(".article-home-header a")[i].innerHTML
+		} else {
+			titular = "Sin título"
+		}
+	
+		// Categorias
+		if(document.querySelectorAll(".article-category a")[i]){
+			categorias = document.querySelectorAll(".article-category a")[i].innerHTML
+		} else {
+			categorias = "Sin categorizar"
+		}
+	
+		datos.push([ autor, titular, categorias]);
+	
+		plantilla += '<h1>Titular: '+titular+'</h1>';
+		plantilla += '<h3>Autor: '+autor+'</h3>';
+		plantilla += '<p>Categoria: '+categorias+'</p>';
+	};
+	
+	document.body.innerHTML = plantilla;
 ```

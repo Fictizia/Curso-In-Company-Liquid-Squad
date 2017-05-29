@@ -47,6 +47,10 @@ function anadirElementoLista(elemento, lista){
 
 function eliminarElementoLista(elemento, lista){
   var listaTemp = lista;
+  if (listaTemp.length== 0){
+    console.log("La lista está vacía");
+    return;
+  }
 
   var posicion = listaTemp.indexOf(elemento);
   if (posicion !== -1){
@@ -57,7 +61,7 @@ function eliminarElementoLista(elemento, lista){
 }
 
 
-
+//mejor con forEach
 for (var i = 0;i<pasajeros.length;i++){
   console.log("El pasajero " + pasajeros[i] + " tiene el asiento: " + (i+1));
 }

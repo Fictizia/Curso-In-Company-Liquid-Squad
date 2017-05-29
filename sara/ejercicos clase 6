@@ -1,0 +1,10 @@
+// EJERCICIOS CLASE 6
+
+// 1 - Sacar en el html el tiempo meteorológico de Madrid, Barcelona y Valencia. Nota: http://openweathermap.org te será de gran ayuda, busca la solución al error 401
+
+
+
+// 2 - Crea una web que nos permita ver los detalles meteorológicos de una ciudad. Requisitos:
+
+/*Usando un input y eventos.
+Usando la API de openweathermap.*/

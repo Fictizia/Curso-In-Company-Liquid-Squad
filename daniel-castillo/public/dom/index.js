@@ -3,7 +3,7 @@
 // Echar un ojo a esta web
 // http://youmightnotneedjquery.com/
 
-// Leer sobre bubbling de eventos
+// Leer sobre bubbling de eventos 
 
 
 // 1 - Reorganizar la lista de profesores de Fictizia por nombre y apellidos (alfabético)

@@ -76,7 +76,7 @@ getContents = function() {
 	  	lastCurrencyContainer.textContent = date + lastCurrencyString;
 
 		}
-
+ 
 	}
 
 }

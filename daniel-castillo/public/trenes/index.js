@@ -11,7 +11,7 @@
 			, 'Alfonso Gomez', 'Luis Navarro', 'Oscar Garcia'
 			, 'Andres Fernandez', 'Lucia Mellado']
 
-
+ 
 
 // 1 - Imprimimos por consola el estado de cada tren en movimiento de manera individualizada... 
 // usando while.

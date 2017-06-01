@@ -17,7 +17,8 @@ nombres.sort(function(a, b){
 });
 console.log(nombres);
 
-
+//se puede utilizar item.outerHTML para repintar directamente
+//para los acentos a.innerText.localeCompare(b.innerText)
 
 
 /*******   EJERCICIO 2 *************/

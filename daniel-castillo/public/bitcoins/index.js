@@ -30,9 +30,8 @@ getContents = function() {
 				bitcoins += (satoshis / 100000000)
 				bitcoins = Math.round(bitcoins * 1000000) / 1000000
 				document.getElementById('bitcoins').textContent = bitcoins
-
-				if (currencyContainer && lastCurrencyContainer)
-						getCurrency()
+				
+				getCurrency()
 			}
 
 		}

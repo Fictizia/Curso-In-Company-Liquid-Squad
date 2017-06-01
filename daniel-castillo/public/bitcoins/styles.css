@@ -1,3 +1,12 @@
+.conatiner {
+  max-width: 500px;
+  border: 1px solid black;
+}
+
+h1, h2, h3, p {
+  padding: 10px;
+}
+
 #currency {
   color: white;
   background-color: red;

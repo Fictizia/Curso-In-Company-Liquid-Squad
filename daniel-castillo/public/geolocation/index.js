@@ -7,21 +7,21 @@ getUserPosition = function() {
       errorContainer = document.getElementById('error');
 
   if ("geolocation" in navigator) {
-    
+
     navigator.geolocation.getCurrentPosition(function(position) {
 
       var latitude = position.coords.latitude,
           longitude = position.coords.longitude;
 
       var map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: parseFloat(latitude), lng:parseFloat(longitude)},
+        center: {lat: latitude, lng: longitude},
         zoom: 14
       });
 
       var marker = new google.maps.Marker({
         position: {lat: latitude, lng: longitude},
         map: map,
-        title: '¡Estás aquí!'
+        title: 'You are here!'
       });
 
       longContainer.textContent = 'longitude: ' + longitude;

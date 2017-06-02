@@ -36,9 +36,7 @@ getContents = function() {
     }
   }
 
-  console.log('sss')
-
-  function getCurrencyyyyy() {
+  function getCurrency() {
 
     var req = new XMLHttpRequest();
     req.open('GET', currencyUrl, false);

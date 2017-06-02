@@ -3,7 +3,7 @@
 // Echar un ojo a esta web
 // http://youmightnotneedjquery.com/
 
-// Leer sobre bubbling de eventos
+// Leer sobre bubbling de eventos 
 
 
 // 1 - Reorganizar la lista de profesores de Fictizia por nombre y apellidos (alfabético)
@@ -11,16 +11,16 @@
 var teachersArray = Array.from(document.getElementById('teachersList').childNodes)
 
 var teachersArrayOrder = teachersArray.sort(function(a, b) {
-	var a = a.getElementsByTagName('h4')[0].innerHTML
-	var b = b.getElementsByTagName('h4')[0].innerHTML
- 	return a.localeCompare(b)
+  var a = a.getElementsByTagName('h4')[0].innerHTML
+  var b = b.getElementsByTagName('h4')[0].innerHTML
+  return a.localeCompare(b)
 })
 
 document.getElementById('teachersList').innerHTML = ''
 
 for (var i = 0; i <= teachersArrayOrder.length; i++) {
-	if(teachersArrayOrder[i] !== undefined)
-		document.getElementById('teachersList').appendChild(teachersArrayOrder[i])
+  if (teachersArrayOrder[i] !== undefined)
+    document.getElementById('teachersList').appendChild(teachersArrayOrder[i])
 }
 
 // 2 - Saca una lista de los cursos disponibles en Fictizia en las 4 areas de formación y conviertelo en Markdown. 
@@ -34,25 +34,23 @@ var trainingAreas = Array.from(document.getElementById('areasIndex').getElements
 
 trainingAreas.forEach(function(area) {
 
-	var title = area.innerText.replace(/\s+/g, ' ')
+  var title = area.innerText.replace(/\s+/g, ' ')
 
-	markdown += '\n## ' + title + '\n'
+  markdown += '\n## ' + title + '\n'
 
-	var id = area.getAttribute('id')
+  var id = area.getAttribute('id')
 
-	id = id.substring(0, id.indexOf('_')) + '_Area'
+  id = id.substring(0, id.indexOf('_')) + '_Area'
 
-	var courses = Array.from(document.getElementById(id).getElementsByTagName('li'))
+  var courses = Array.from(document.getElementById(id).getElementsByTagName('li'))
 
-	markdown += '\n**Total de cursos: ' + courses.length + '**\n'
+  markdown += '\n**Total de cursos: ' + courses.length + '**\n'
 
-	courses.forEach(function(course) {
-		var href = '(' + course.getElementsByTagName('a')[0].getAttribute('href') + ')'
-		var hours = course.getElementsByClassName('contextualInfo')[0].innerText.match( /\d+/ig)
-		markdown += '- [' + course.getElementsByTagName('strong')[0].innerText.replace(/\s+/g, ' ') 
-					+ ' (' + hours + ' horas)]' 
-					+ href + '\n'
-	})
+  courses.forEach(function(course) {
+    var href = '(' + course.getElementsByTagName('a')[0].getAttribute('href') + ')'
+    var hours = course.getElementsByClassName('contextualInfo')[0].innerText.match(/\d+/ig)
+    markdown += '- [' + course.getElementsByTagName('strong')[0].innerText.replace(/\s+/g, ' ') + ' (' + hours + ' horas)]' + href + '\n'
+  })
 
 })
 
@@ -67,8 +65,8 @@ console.log(markdown)
 var lines = Array.from(document.getElementsByClassName('bloquet'))
 
 lines.forEach(function(line) {
-	var status = line.getElementsByTagName('a')[0].innerText
-	console.log(status)
+  var status = line.getElementsByTagName('a')[0].innerText
+  console.log(status)
 })
 
 
@@ -80,15 +78,12 @@ lines.forEach(function(line) {
 var images = Array.from(document.getElementsByTagName('img'))
 
 images.forEach(function(img) {
-	var width = img.clientWidth
-	var height = img.clientWidth
-	img.src = 'http://placekitten.com/g/' + width + '/' + height
+  var width = img.clientWidth
+  var height = img.clientWidth
+  img.src = 'http://placekitten.com/g/' + width + '/' + height
 })
 
 
 // 5 - Diseña un script que agrupe todos los titulares, sus autores y categorias dentro de Genbeta:dev y 
 // luego vacíe el html para cargar una lista hecha por nosotros con la información previamente recolectada.
 // https://www.genbetadev.com/
-
-
-

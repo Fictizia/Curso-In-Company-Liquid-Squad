@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Blockchain</title>
+    <script type="text/javascript" src="clase7.js"></script>
+
+    <style>
+      body{ background-color: #616568;}
+
+      h1, p{color: #fff;}
+      marquee{
+        width: 750px;
+        margin: auto;
+      }
+      #valores{
+        color: yellow;
+      }
+
+      #transferencias{
+        color: #56c930;
+      }
+
+      section{
+        margin-left:400px;
+      }
+      span{
+        font-size: 20px;
+        color: #fd783a;
+      }
+
+    </style>
+  </head>
+  <body onload="cargarDatos()">
+    <section>
+
+      <h1>Blockchain en tiempo Real</h1>
+
+      <div>
+        <span>BTC     </span><span id="transferidos"></span>
+      </div>
+      <p>Exchange Values:</p>
+      <marquee direction="left" id="valores" class=""></marquee>
+
+      <marquee direction="left" id="transferencias"></marquee>
+
+      <p>Desde que estás conectado</p>
+    </section>
+  </body>
+</html>

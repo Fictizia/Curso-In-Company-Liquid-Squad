@@ -14,36 +14,36 @@ var cajero = {
   methods:{
     usuario_administrador:{
       anadirDinero: function(cantidad){
-        this.efectivo += cantidad;
-        this.methods.operaciones.logOperacion("El administrador ha añadido: " + cantidad + " euros");
+        cajero.efectivo += cantidad;
+        cajero.methods.operaciones.logOperacion("El administrador ha añadido: " + cantidad + " euros");
       },
       retirarDinero: function(cantidad){
-        if (cantidad > this.efectivo){
+        if (cantidad > cajero.efectivo){
           console.log("No hay disponibilidad de tanto efectivo");
         }else{
-          this.efectivo -= cantidad;
-          this.methods.operaciones.logOperacion("Se ha retirado " + cantidad + "euros por el administrador");
+          cajero.efectivo -= cantidad;
+          cajero.methods.operaciones.logOperacion("Se ha retirado " + cantidad + "euros por el administrador");
         }
       }
     },
     administrador: {
       agregarCliente: function(nombre){
-        //var posicion = this.clientes.indexOf(undefined);
+        //var posicion = cajero.clientes.indexOf(undefined);
         var nuevoCliente = {nombre: nombre, saldo:0};
-        var posicion = this.methods.operaciones.buscarCliente(this.clientes, nombre, 'nombre');
+        var posicion = cajero.methods.operaciones.buscarCliente(cajero.clientes, nombre, 'nombre');
         if (posicion !== -1){
-          this.clientes[posicion] = nuevoCliente;
+          cajero.clientes[posicion] = nuevoCliente;
         }else{
-          this.clientes.push(nuevoCliente);
+          cajero.clientes.push(nuevoCliente);
         }
-        this.methods.operaciones.logOperacion("Se ha añadido el Cliente: " + nombre);
+        cajero.methods.operaciones.logOperacion("Se ha añadido el Cliente: " + nombre);
       },
       eliminarCliente: function(nombre){
-        //var posicion = this.clientes.indexOf(nombre);
-        var posicion = this.methods.operaciones.buscarCliente(this.clientes, nombre, 'nombre');
+        //var posicion = cajero.clientes.indexOf(nombre);
+        var posicion = cajero.methods.operaciones.buscarCliente(cajero.clientes, nombre, 'nombre');
         if (posicion !== -1){
-          this.clientes[posicion] = undefined;
-          this.methods.operaciones.logOperacion("Se ha eliminado el Cliente: " + nombre);
+          cajero.clientes[posicion] = undefined;
+          cajero.methods.operaciones.logOperacion("Se ha eliminado el Cliente: " + nombre);
         }else{
           console.error("No existe el cliente");
         }
@@ -51,25 +51,25 @@ var cajero = {
     },
     cliente:{
       anadirEfectivo: function(cantidad, nombre){
-        var posicion = this.methods.operaciones.buscarCliente(this.clientes, nombre, 'nombre');
+        var posicion = cajero.methods.operaciones.buscarCliente(cajero.clientes, nombre, 'nombre');
         if (posicion !== -1){
-          var objetoCliente = this.clientes[posicion];
+          var objetoCliente = cajero.clientes[posicion];
           objetoCliente.saldoCliente += cantidad;
         }else{
           console.error("No existe el cliente");
         }
       },
       retirarEfectivo: function(cantidad, nombre){
-        var posicion = this.methods.operaciones.buscarCliente(this.clientes, nombre, 'nombre');
+        var posicion = cajero.methods.operaciones.buscarCliente(cajero.clientes, nombre, 'nombre');
         if (posicion === -1){
           console.error("No existe el cliente");
         }else{
-          var objetoCliente = this.clientes[posicion];
+          var objetoCliente = cajero.clientes[posicion];
           if (cantidad > objetoCliente.saldo){
             console.log("No hay disponibilidad de tanto efectivo");
           }else{
             objetoCliente.saldo -= cantidad;
-            this.methods.operaciones.logOperacion("Se ha retirado " + cantidad + "euros por el cliente: " + nombre);
+            cajero.methods.operaciones.logOperacion("Se ha retirado " + cantidad + "euros por el cliente: " + nombre);
           }
         }
       }

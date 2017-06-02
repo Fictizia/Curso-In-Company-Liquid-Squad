@@ -2,25 +2,34 @@
 
 getUserPosition = function() {
 
-  navigator.geolocation.getCurrentPosition(function(position) {
+  var longContainer = document.getElementById('longitude'),
+      latContainer = document.getElementById('latitude'),
+      errorContainer = document.getElementById('error');
 
-    var latitude = position.coords.latitude,
-        longitude = position.coords.longitude;
+  if ("geolocation" in navigator) {
+    
+    navigator.geolocation.getCurrentPosition(function(position) {
 
-    var map = new google.maps.Map(document.getElementById('map'), {
-      center: {lat: parseFloat(latitude), lng:parseFloat(longitude)},
-      zoom: 14
-    });
+      var latitude = position.coords.latitude,
+          longitude = position.coords.longitude;
 
-    var marker = new google.maps.Marker({
-      position: {lat: latitude, lng: longitude},
-      map: map,
-      title: '¡Estás aquí!'
-    });
+      var map = new google.maps.Map(document.getElementById('map'), {
+        center: {lat: parseFloat(latitude), lng:parseFloat(longitude)},
+        zoom: 14
+      });
 
-    document.getElementById('longitude').textContent = longitude;
-    document.getElementById('latitude').textContent = latitude;
+      var marker = new google.maps.Marker({
+        position: {lat: latitude, lng: longitude},
+        map: map,
+        title: '¡Estás aquí!'
+      });
 
-  })
+      longContainer.textContent = 'longitude: ' + longitude;
+      latContainer.textContent = 'latitude: ' + latitude;
+
+    })
+  } else {
+      errorContainer.textContent = 'Geolocation not supported';
+  }
 
 }

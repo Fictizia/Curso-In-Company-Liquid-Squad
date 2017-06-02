@@ -8,7 +8,6 @@ getContents = function() {
     currencyContainer = document.getElementById('currency'),
     lastCurrencyContainer = document.getElementById('lastCurrency');
 
-
   bitSocket.onopen = function() {
 
     bitSocket.send('{"op":"unconfirmed_sub"}');
@@ -36,7 +35,6 @@ getContents = function() {
 
     }
   }
-
 
   function getCurrency() {
 

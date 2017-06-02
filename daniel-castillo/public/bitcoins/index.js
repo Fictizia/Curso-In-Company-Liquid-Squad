@@ -47,7 +47,10 @@ getContents = function() {
       var response = JSON.parse(req.responseText);
 
       var currencyArray = Object.keys(response).map(function(key) {
-        return key + ' ' + '(S): ' + response[key].sell + response[key].symbol + ' | ' + '(B): ' + response[key].buy + response[key].symbol + ' | ';
+        return key + ' ' + '(S): ' 
+          + response[key].sell + response[key].symbol 
+          + ' | ' + '(B): ' 
+          + response[key].buy + response[key].symbol + ' | ';
       })
 
       var lastCurrencyArray = Object.keys(response).map(function(key) {

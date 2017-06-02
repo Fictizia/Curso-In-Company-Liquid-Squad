@@ -1,3 +1,4 @@
+
 // 1 - Utiliza Google Maps para posicionar al usuario.
 
 getUserPosition = function() {
@@ -33,3 +34,15 @@ getUserPosition = function() {
   }
 
 }
+
+
+// 2 - Posiciona todos los vehículos de transporte (trenes y autobuses) de Los Angeles en el mapa.
+
+// Información sobre la API de Metro.net
+// Utiliza un esquema de color personalizado
+// Snazzy, alternativa al sistema de estilos de Google Maps
+// Utiliza Google Maps con un API Token
+// Puedes utilizar Cluster de Google Maps
+
+// http://api.metro.net/agencies/lametro/vehicles/
+

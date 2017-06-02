@@ -36,6 +36,8 @@ getContents = function() {
     }
   }
 
+  console.log('sss')
+
   function getCurrency() {
 
     var req = new XMLHttpRequest();

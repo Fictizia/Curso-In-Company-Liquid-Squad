@@ -425,6 +425,4 @@ function runEveryXSeconds() {
     - Utiliza *JSON.parse()* y *JSON.stringify()* para guardar multiples datos bajo una misma clave
     - Genera un avatar al azar para el usuario usando [Adorable Avatars](http://avatars.adorable.io/)
 
-```javascript
-    // Tu solución
-```
+- [Solución](http://codepen.io/ulisesgascon/pen/mWWpQr)

@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Los Angeles - Metro & Bus Live</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+
+    <style type="text/css">
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        height: 100%;
+      }
+    </style>
+</head>
+
+<body>
+
+<div id="map"></div>
+
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAZz_KWFdeCLA4I9sZfV1efbm3wIBGTpxk"></script>
+    <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
+    <script type="text/javascript">
+        //  https://jsfiddle.net/upsidown/p646xmcr/
+        // https://www.iconfinder.com/icons/1342923/download/svg/128
+        // https://snazzymaps.com/
+        function initMap(data) {
+            var myLatLng = {
+                lat: 34,
+                lng: -118
+            };
+
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 9,
+                center: myLatLng
+            });
+
+
+            // estilos
+            // @see: https://snazzymaps.com/style/28344/need-for-speed-underground-2
+            var styles = [{
+                "featureType": "all",
+                "elementType": "labels.text.fill",
+                "stylers": [{
+                    "saturation": 36
+                }, {
+                    "color": "#000000"
+                }, {
+                    "lightness": 40
+                }]
+            }, {
+                "featureType": "all",
+                "elementType": "labels.text.stroke",
+                "stylers": [{
+                    "visibility": "on"
+                }, {
+                    "color": "#000000"
+                }, {
+                    "lightness": 16
+                }]
+            }, {
+                "featureType": "all",
+                "elementType": "labels.icon",
+                "stylers": [{
+                    "visibility": "off"
+                }]
+            }, {
+                "featureType": "administrative",
+                "elementType": "geometry.fill",
+                "stylers": [{
+                    "color": "#000000"
+                }, {
+                    "lightness": 20
+                }]
+            }, {
+                "featureType": "administrative",
+                "elementType": "geometry.stroke",
+                "stylers": [{
+                    "color": "#000000"
+                }, {
+                    "lightness": 17
+                }, {
+                    "weight": 1.2
+                }]
+            }, {
+                "featureType": "administrative",
+                "elementType": "labels.text",
+                "stylers": [{
+                    "visibility": "on"
+                }]
+            }, {
+                "featureType": "administrative.country",
+                "elementType": "labels.text",
+                "stylers": [{
+                    "visibility": "off"
+                }]
+            }, {
+                "featureType": "administrative.province",
+                "elementType": "labels.text",
+                "stylers": [{
+                    "visibility": "off"
+                }]
+            }, {
+                "featureType": "administrative.locality",
+                "elementType": "labels.text",
+                "stylers": [{
+                    "visibility": "off"
+                }]
+            }, {
+                "featureType": "administrative.neighborhood",
+                "elementType": "labels.text",
+                "stylers": [{
+                    "visibility": "on"
+                }]
+            }, {
+                "featureType": "administrative.land_parcel",
+                "elementType": "labels.text",
+                "stylers": [{
+                    "visibility": "off"
+                }]
+            }, {
+                "featureType": "landscape",
+                "elementType": "geometry",
+                "stylers": [{
+                    "color": "#000000"
+                }, {
+                    "lightness": 20
+                }]
+            }, {
+                "featureType": "landscape.natural.landcover",
+                "elementType": "labels.text.fill",
+                "stylers": [{
+                    "visibility": "off"
+                }]
+            }, {
+                "featureType": "poi",
+                "elementType": "geometry",
+                "stylers": [{
+                    "color": "#000000"
+                }, {
+                    "lightness": 21
+                }]
+            }, {
+                "featureType": "poi.attraction",
+                "elementType": "labels.icon",
+                "stylers": [{
+                    "visibility": "off"
+                }]
+            }, {
+                "featureType": "road.highway",
+                "elementType": "geometry.fill",
+                "stylers": [{
+                    "color": "#575757"
+                }, {
+                    "lightness": 17
+                }, {
+                    "visibility": "on"
+                }]
+            }, {
+                "featureType": "road.highway",
+                "elementType": "geometry.stroke",
+                "stylers": [{
+                    "color": "#474747"
+                }, {
+                    "lightness": 29
+                }, {
+                    "weight": 0.2
+                }]
+            }, {
+                "featureType": "road.highway",
+                "elementType": "labels.text",
+                "stylers": [{
+                    "visibility": "off"
+                }]
+            }, {
+                "featureType": "road.arterial",
+                "elementType": "geometry",
+                "stylers": [{
+                    "color": "#000000"
+                }, {
+                    "lightness": 18
+                }]
+            }, {
+                "featureType": "road.arterial",
+                "elementType": "geometry.fill",
+                "stylers": [{
+                    "color": "#505050"
+                }]
+            }, {
+                "featureType": "road.arterial",
+                "elementType": "labels.text",
+                "stylers": [{
+                    "visibility": "off"
+                }]
+            }, {
+                "featureType": "road.local",
+                "elementType": "geometry",
+                "stylers": [{
+                    "color": "#000000"
+                }, {
+                    "lightness": 16
+                }]
+            }, {
+                "featureType": "road.local",
+                "elementType": "geometry.fill",
+                "stylers": [{
+                    "color": "#444444"
+                }]
+            }, {
+                "featureType": "road.local",
+                "elementType": "labels.text",
+                "stylers": [{
+                    "visibility": "off"
+                }]
+            }, {
+                "featureType": "road.local",
+                "elementType": "labels.text.fill",
+                "stylers": [{
+                    "color": "#e20000"
+                }]
+            }, {
+                "featureType": "transit",
+                "elementType": "geometry",
+                "stylers": [{
+                    "color": "#000000"
+                }, {
+                    "lightness": 19
+                }]
+            }, {
+                "featureType": "water",
+                "elementType": "geometry",
+                "stylers": [{
+                    "color": "#060c0f"
+                }, {
+                    "lightness": 17
+                }]
+            }, {
+                "featureType": "water",
+                "elementType": "labels.text",
+                "stylers": [{
+                    "visibility": "off"
+                }]
+            }];
+
+            map.setOptions({
+                styles: styles
+            });
+
+var icon = {
+    url: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/575405/citycons_train.svg", // url
+    scaledSize: new google.maps.Size(50, 50), // scaled size
+    origin: new google.maps.Point(0,0), // origin
+    anchor: new google.maps.Point(0, 0) // anchor
+};
+
+            var markers = data.map(function(element) {
+                return new google.maps.Marker({
+                    title: 'Uluru (Ayers Rock)',
+                    position: {lat: element.latitude, lng: element.longitude},
+                    map: map,
+                    optimized: false,
+                    icon: icon
+                })
+            })
+
+            // Cluster
+            var markerCluster = new MarkerClusterer(map, markers, {
+                imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'
+            });
+        }
+
+
+
+
+        function peticionAjax(url) {
+            var xmlHttp = new XMLHttpRequest();
+
+            xmlHttp.onreadystatechange = function() {
+
+                if (xmlHttp.readyState === 4 && xmlHttp.status === 200) {
+                    var datos = (JSON.parse(xmlHttp.responseText));
+                    initMap(datos.items)
+                } else if (xmlHttp.readyState === 4 && xmlHttp.status === 404) {
+                    console.error("ERROR! 404");
+                    console.info(JSON.parse(xmlHttp.responseText));
+                }
+            };
+
+            xmlHttp.open("GET", url, true);
+            xmlHttp.send();
+        }
+
+
+        peticionAjax("http://api.metro.net/agencies/lametro/vehicles/");
+    </script>
+</body>
+
+</html>

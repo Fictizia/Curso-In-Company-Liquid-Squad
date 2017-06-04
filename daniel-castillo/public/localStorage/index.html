@@ -1,24 +1,29 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>Local Storage</title>
   <link rel="stylesheet" type="text/css" href="./styles.css">
   <script type="text/javascript" src="./index.js"></script>
 </head>
+
 <body>
   <form name="contact">
 
-    <input type="text" name="name">
-    <input type="text" name="phone">
+    <label for="name">Name</label>
+    <input type="text" id="name" name="name">
+
+    <label for="name">Phone</label>
+    <input type="text" id="phone" name="phone">
+    
+    <label for="name">Email</label>
+    <input type="text" id="email" name="email">
 
     <div class="buttons">
-      <button type="button">Delete contact</button>
-      <button type="button">Delete all user</button>
-      <button type="button">Recover user</button>
+      <button type="button" id="save" onclick="saveUser()">Save user</button>
     </div>
 
   </form>
-
-
 </body>
+
 </html>

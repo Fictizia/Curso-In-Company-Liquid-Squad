@@ -1,18 +1,40 @@
-saveUser = function() {
+saveContact = function() {
+
+  var contacts = JSON.parse(localStorage.getItem('contacts')) || [],
+      inputs = Array.from(document.getElementsByTagName('input')),
+      contact = {};
+
+  inputs.forEach(function(input) {
+    contact[input.name] = input.value;
+  });
+
+  contacts.push(contact);
+
+  localStorage.setItem('contacts', JSON.stringify(contacts));
+
+};
 
 
-  var users = JSON.parse(localStorage.getItem("users")) || [];
+getContacts = function() {
+  var contacts =  JSON.parse(localStorage.getItem('contacts')) || [];
 
-  var user = {
-    name: document.getElementById('name').value,
-    phone: document.getElementById('phone').value,
-    email: document.getElementById('email').value
-  }
+  var html = '';
 
-  users.push(user)
+  contacts.forEach(function(contact) {
 
-  localStorage.setItem('users', JSON.stringify(users))
+    html += '<div class="contact">'
 
-  console.log('users ', users)
+    Object.keys(contact).forEach(function(key) {
+      html += '<p class="' + key + '"><span>' + key + ':</span>' + contact[key] + '</p>';
+    });
+
+    html += '</div">'
+
+    console.log(html)
+
+    document.getElementById('contacts').innerHTML = html;
+
+  });
+
 
 }

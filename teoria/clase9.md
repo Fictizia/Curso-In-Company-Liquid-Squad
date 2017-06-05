@@ -412,9 +412,7 @@ function runEveryXSeconds() {
     - Botón para borrar todos los contactos
     - Botón para recuperar el telefono de un contacto
 
-```javascript
-    // Tu solución
-```
+- [Solución](http://codepen.io/ulisesgascon/pen/LWWeJY)
 
 **2 -** Crea una libreta de contactos para guardar multiples datos.
 - Objetivos:
@@ -427,6 +425,4 @@ function runEveryXSeconds() {
     - Utiliza *JSON.parse()* y *JSON.stringify()* para guardar multiples datos bajo una misma clave
     - Genera un avatar al azar para el usuario usando [Adorable Avatars](http://avatars.adorable.io/)
 
-```javascript
-    // Tu solución
-```
+- [Solución](http://codepen.io/ulisesgascon/pen/mWWpQr)

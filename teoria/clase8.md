@@ -584,9 +584,7 @@ function initMap() {
 
 **1 -** Utiliza Google Maps para posicionar al usuario.
 
-```javascript
-    // Tu solución
-```
+- [Solucion](https://codepen.io/ulisesgascon/pen/637fc481e9258728635361a369061e1c)
     
 **2 -** Posiciona todos los vehículos de transporte (trenes y autobuses) de Los Angeles en el mapa.
 
@@ -596,6 +594,4 @@ function initMap() {
 - [Utiliza Google Maps con un API Token](https://developers.google.com/maps/documentation/javascript/get-api-key?hl=ES)
 - [Puedes utilizar Cluster de Google Maps](https://developers.google.com/maps/documentation/javascript/marker-clustering)
 
-```javascript
-    // Tu solución
-```
+- [Solución](../otros/transport.html)

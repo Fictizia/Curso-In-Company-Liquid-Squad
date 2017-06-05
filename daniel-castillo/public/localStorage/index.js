@@ -49,29 +49,26 @@ saveContact = function() {
 
 getContacts = function() {
   var contacts =  JSON.parse(localStorage.getItem('contacts')) || [];
-  var html = '';
+
 
   contacts.forEach(function(contact) {
 
-    var i = 1;
+    var template = '<div class="contact" onclick="dropUser(#id)">#content</div>';
     var keys = Object.keys(contact);
+    var content = '';
 
     keys.forEach(function(key) {
-
-      if (i === 1)
-        html += '<div class="contact" onclick="dropUser(' + contact.id + ')">'
-
-      html += '<p class="' + key + '"><span>' + key + ':</span>' + contact[key] + '</p>';
-
-      if (i === keys.length)
-        html += '</div>'
-
-      i++;
+      content += '<p class="' + key + '"><span>' + key + ':</span>' + contact[key] + '</p>';
     });
+
+    template.replace('#id', contact.id);
+    template.replace('#content', content);
+
+    document.getElementById('contacts-container').appendChild(template)
 
   });
 
-  document.getElementById('contacts-container').innerHTML = html;
+
 
 
 }

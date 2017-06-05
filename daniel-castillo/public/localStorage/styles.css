@@ -1,3 +1,9 @@
 input[type="text"] {
-    display: block;
+  display: block;
+}
+
+span {
+  font-weight: bold;
+  margin-right: .5em;
+  text-transform: capitalize;
 }

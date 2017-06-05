@@ -21,7 +21,7 @@ dropUser = function(id) {
 
   contacts.forEach(function(contact) {
     if(contact.id === id)
-      consolelog('vaaaamos ' + id)
+      console.log('vaaaamos ' + id)
   });
 
 },
@@ -49,20 +49,25 @@ saveContact = function() {
 
 getContacts = function() {
   var contacts =  JSON.parse(localStorage.getItem('contacts')) || [];
-
   var html = '';
 
   contacts.forEach(function(contact) {
 
-    html += '<div class="contact" onclick="dropUser(' + contact.id + ')">'
+    var i = 1;
+    var keys = Object.keys(contact);
 
-    Object.keys(contact).forEach(function(key) {
+    keys.forEach(function(key) {
+
+      if (i === 1)
+        html += '<div class="contact" onclick="dropUser(' + contact.id + ')">'
+
       html += '<p class="' + key + '"><span>' + key + ':</span>' + contact[key] + '</p>';
+
+      if (i === keys.length)
+        html += '</div>'
+
+      i++;
     });
-
-    html += '</div">'
-
-    console.log(html)
 
   });
 

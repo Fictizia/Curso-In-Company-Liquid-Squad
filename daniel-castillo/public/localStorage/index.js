@@ -1,4 +1,4 @@
-orderContacts = function() {
+ function orderContacts() {
 
   var contacts = JSON.parse(localStorage.getItem('contacts')) || [];
   
@@ -11,7 +11,7 @@ orderContacts = function() {
 
 };
 
-dropAllContacts = function() {
+function dropAllContacts() {
   localStorage.setItem('contacts', JSON.stringify([]));
   showMsg('All contacts have been deleted');
 };
@@ -30,7 +30,7 @@ setContactTemplate = function(contact) {
   return template;
 };
 
-searchContact = function() {
+function searchContact() {
   var contacts = JSON.parse(localStorage.getItem('contacts')) || [];
   var search = document.getElementById('name').value.toLowerCase();
   var contactsHtml = '';
@@ -52,21 +52,21 @@ searchContact = function() {
 
 };
 
-showMsg = function(msg) {
+function showMsg(msg) {
   var template = '<p id="msg">' + msg + '</p>';
   document.getElementById('msg-container').innerHTML = template;
   hideContacts();
 };
 
-hideMsg = function() {
+function hideMsg() {
   document.getElementById('msg-container').innerHTML = '';
 };
 
-hideContacts = function() {
+function hideContacts() {
   document.getElementById('contacts-container').innerHTML = '';
 };
 
-dropContact = function(id) {
+function dropContact(id) {
 
   var contacts =  JSON.parse(localStorage.getItem('contacts'));
   var newContacts = [];
@@ -88,35 +88,52 @@ dropContact = function(id) {
   localStorage.setItem('contacts', JSON.stringify(newContacts));
 
   showMsg(name + ' has been removed from the list');
-},
+};
 
-saveContact = function() {
+function clearForm() {
+  var inputs = Array.from(document.getElementsByTagName('input'));
+  inputs.forEach(function(input) {
+    input.value = '';
+  });
+};
+
+function saveContact() {
 
   var contacts = JSON.parse(localStorage.getItem('contacts')) || [],
       inputs = Array.from(document.getElementsByTagName('input')),
       contact = {};
-      name = ''
+      name = '',
+      emptyValue = false;
 
   inputs.forEach(function(input) {
+
+    if (input.value == '')
+      emptyValue = true;
+
     contact[input.name] = input.value;
-    input.value = '';
+    
   });
 
-  contact['id'] = contacts.length;
 
-  contacts.push(contact);
+  function saveIt() {
+    contact['id'] = contacts.length;
 
-  name = contact.name;
+    contacts.push(contact);
 
-  localStorage.setItem('contacts', JSON.stringify(contacts));
+    name = contact.name;
 
-  orderContacts;
+    localStorage.setItem('contacts', JSON.stringify(contacts));
 
-  showMsg(name + ' has been included in the list');
+    showMsg(name + ' has been included in the list');
+    clearForm();
+  };
+
+  emptyValue ? showMsg('Please, check the form') : saveIt();
+
 };
 
 
-getContacts = function() {
+function getContacts() {
 
   hideMsg();
 

@@ -20,10 +20,13 @@
     <input type="text" id="email" name="email">
 
     <div class="buttons">
+      <button type="button" onclick="searchContact()">Search contact</button>
       <button type="button" onclick="saveContact()">Save contact</button>
       <button type="button" onclick="getContacts()">Get contacts</button>
-      <button type="button" onclick="dropContact()">Drop contact</button>
+      <button type="button" onclick="dropAllContacts()">Drop all contacts</button>
     </div>
+
+    <div id="msg-container"></div>
 
     <div id="contacts-container"></div>
 

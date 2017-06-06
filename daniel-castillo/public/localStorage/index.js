@@ -1,72 +1,152 @@
+ function orderContacts() {
 
-orderContacts = function() {
-
-  var contacts = JSON.parse(localStorage.getItem('contacts'));
+  var contacts = JSON.parse(localStorage.getItem('contacts')) || [];
   
-  var orderContacts = contacts.sort(function(a, b) {
+  return contacts.sort(function(a, b) {
     var nameA = a.name.toUpperCase(),
         nameB = b.name.toUpperCase();
     return (nameA < nameB) ? -1 : (nameA > nameB) ? 1 : 0;
   });
 
-  orderContacts = setId(orderContacts);
-
-  return orderContacts;
 
 };
 
-dropUser = function(id) {
+function dropAllContacts() {
+  localStorage.setItem('contacts', JSON.stringify([]));
+  showMsg('All contacts have been deleted');
+};
 
-  var contacts =  JSON.parse(localStorage.getItem('contacts'));
+setContactTemplate = function(contact) {
+  var template = '<div class="contact">#content<button type="button" onclick="dropContact(#id)"">Drop contact</button></div>';
+  var content = '';
 
-  contacts.forEach(function(contact) {
-    if(contact.id === id)
-      consolelog('vaaaamos ' + id)
+  Object.keys(contact).forEach(function(key) {
+    content += '<p class="' + key + '"><span>' + key + ':</span>' + contact[key] + '</p>';
   });
 
-},
+  template = template.replace('#id', contact.id);
+  template = template.replace('#content', content);
 
-saveContact = function() {
+  return template;
+};
+
+function searchContact() {
+  var contacts = JSON.parse(localStorage.getItem('contacts')) || [];
+  var search = document.getElementById('name').value.toLowerCase();
+  var contactsHtml = '';
+
+  hideMsg();
+
+  contacts.forEach(function(contact) {
+
+    if((contact.name).toLowerCase().indexOf(search) !== -1) {
+      contactsHtml += setContactTemplate(contact);
+    };
+
+  });
+
+  document.getElementById('contacts-container').innerHTML = contactsHtml;
+
+  if(contactsHtml === '')
+    showMsg('Contact not found');
+
+};
+
+function showMsg(msg) {
+  var template = '<p id="msg">' + msg + '</p>';
+  document.getElementById('msg-container').innerHTML = template;
+  hideContacts();
+};
+
+function hideMsg() {
+  document.getElementById('msg-container').innerHTML = '';
+};
+
+function hideContacts() {
+  document.getElementById('contacts-container').innerHTML = '';
+};
+
+function dropContact(id) {
+
+  var contacts =  JSON.parse(localStorage.getItem('contacts'));
+  var newContacts = [];
+  var i = 0;
+  var name = '';
+
+  contacts.forEach(function(contact) {
+    if(contact.id !== id)
+      newContacts.push(contact);
+    else
+      name = contact.name;
+  });
+
+  newContacts.forEach(function(contact) {
+    contact.id = i;
+    i++;
+  });
+
+  localStorage.setItem('contacts', JSON.stringify(newContacts));
+
+  showMsg(name + ' has been removed from the list');
+};
+
+function clearForm() {
+  var inputs = Array.from(document.getElementsByTagName('input'));
+  inputs.forEach(function(input) {
+    input.value = '';
+  });
+};
+
+function saveContact() {
 
   var contacts = JSON.parse(localStorage.getItem('contacts')) || [],
       inputs = Array.from(document.getElementsByTagName('input')),
       contact = {};
+      name = '',
+      emptyValue = false;
 
   inputs.forEach(function(input) {
+
+    if (input.value == '')
+      emptyValue = true;
+
     contact[input.name] = input.value;
+    
   });
 
-  contact['id'] = contacts.length;
 
-  contacts.push(contact);
+  function saveIt() {
+    contact['id'] = contacts.length;
 
-  localStorage.setItem('contacts', JSON.stringify(contacts));
+    contacts.push(contact);
 
-  orderContacts;
+    name = contact.name;
+
+    localStorage.setItem('contacts', JSON.stringify(contacts));
+
+    showMsg(name + ' has been included in the list');
+    clearForm();
+  };
+
+  emptyValue ? showMsg('Please, check the form') : saveIt();
 
 };
 
 
-getContacts = function() {
-  var contacts =  JSON.parse(localStorage.getItem('contacts')) || [];
+function getContacts() {
 
-  var html = '';
+  hideMsg();
+
+  var contacts =  orderContacts(),
+      contactsHtml = '';
 
   contacts.forEach(function(contact) {
-
-    html += '<div class="contact" onclick="dropUser(' + contact.id + ')">'
-
-    Object.keys(contact).forEach(function(key) {
-      html += '<p class="' + key + '"><span>' + key + ':</span>' + contact[key] + '</p>';
-    });
-
-    html += '</div">'
-
-    console.log(html)
-
+    contactsHtml += setContactTemplate(contact);
   });
 
-  document.getElementById('contacts-container').innerHTML = html;
+  document.getElementById('contacts-container').innerHTML = contactsHtml;
 
+  if(!contacts.length)
+    showMsg('No contacts found');
 
 }

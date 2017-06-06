@@ -7,3 +7,22 @@ span {
   margin-right: .5em;
   text-transform: capitalize;
 }
+
+.id {
+  display: none;
+}
+
+.name {
+  font-size: 25px;
+  margin-bottom: 0;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.name > span {
+  display: none;
+}
+
+button {
+  cursor: pointer;
+}

@@ -1,5 +1,12 @@
 # Clase 11
 
+
+### Eventos
+
+![NEXT_17](https://lp.google-mkto.com/rs/248-TPC-286/images/NEXT17_Madrid_FINAL.png)
+
+**[Más info](https://cloudplatformonline.com/Next-Madrid-2017.html)**
+
 ### Monitorizar Variables Globales
 
 - [Detectar variables globales en Javascript por Carlos Benítez](http://www.etnassoft.com/2011/04/04/detectar-variables-globales-en-javascript/)

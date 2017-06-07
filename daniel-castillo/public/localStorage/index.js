@@ -110,7 +110,7 @@ function saveContact() {
   });
 
 
-  function saveIt() {
+  var saveIt = function() {
     contact['id'] = contacts.length;
 
     contacts.push(contact);

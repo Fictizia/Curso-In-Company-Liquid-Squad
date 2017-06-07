@@ -1,4 +1,4 @@
- function orderContacts() {
+function orderContacts() {
 
   var contacts = JSON.parse(localStorage.getItem('contacts')) || [];
   
@@ -8,7 +8,6 @@
     return (nameA < nameB) ? -1 : (nameA > nameB) ? 1 : 0;
   });
 
-
 };
 
 function dropAllContacts() {
@@ -16,7 +15,7 @@ function dropAllContacts() {
   showMsg('All contacts have been deleted');
 };
 
-setContactTemplate = function(contact) {
+function setContactTemplate(contact) {
   var template = '<div class="contact">#content<button type="button" onclick="dropContact(#id)"">Drop contact</button></div>';
   var content = '';
 
@@ -35,7 +34,7 @@ function searchContact() {
   var search = document.getElementById('name').value.toLowerCase();
   var contactsHtml = '';
 
-  hideMsg();
+  setLayerContent('msg-container', '');
 
   contacts.forEach(function(contact) {
 
@@ -45,7 +44,7 @@ function searchContact() {
 
   });
 
-  document.getElementById('contacts-container').innerHTML = contactsHtml;
+  setLayerContent('contacts-container', contactsHtml);
 
   if(contactsHtml === '')
     showMsg('Contact not found');
@@ -55,15 +54,11 @@ function searchContact() {
 function showMsg(msg) {
   var template = '<p id="msg">' + msg + '</p>';
   document.getElementById('msg-container').innerHTML = template;
-  hideContacts();
+  setLayerContent('contacts-container', '');
 };
 
-function hideMsg() {
-  document.getElementById('msg-container').innerHTML = '';
-};
-
-function hideContacts() {
-  document.getElementById('contacts-container').innerHTML = '';
+function setLayerContent(layer, content) {
+  document.getElementById(layer).innerHTML = content;
 };
 
 function dropContact(id) {
@@ -111,11 +106,11 @@ function saveContact() {
       emptyValue = true;
 
     contact[input.name] = input.value;
-    
+
   });
 
 
-  function saveIt() {
+  var saveIt = function() {
     contact['id'] = contacts.length;
 
     contacts.push(contact);
@@ -135,7 +130,7 @@ function saveContact() {
 
 function getContacts() {
 
-  hideMsg();
+  setLayerContent('msg-container', '');
 
   var contacts =  orderContacts(),
       contactsHtml = '';
@@ -144,9 +139,9 @@ function getContacts() {
     contactsHtml += setContactTemplate(contact);
   });
 
-  document.getElementById('contacts-container').innerHTML = contactsHtml;
+  setLayerContent('contacts-container', contactsHtml);
 
   if(!contacts.length)
     showMsg('No contacts found');
 
-}
+};

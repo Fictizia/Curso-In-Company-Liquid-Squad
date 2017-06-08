@@ -1,6 +1,6 @@
 var myRevealingModule = (function() {
 
-  var privateVar = 'I am private',
+  var _privateVar = 'I am private',
       publicVar = 'I am public';
 
   var _privateMethod = function() {
@@ -8,11 +8,11 @@ var myRevealingModule = (function() {
   };
 
   var publicMethod = function() {
-    console.log('Public method gets the private var ' + privateVar);
+    console.log('Public method gets the private var ' + _privateVar);
   };
 
   var changePrivateVar = function(newString) {
-    privateVar = newString;
+    _privateVar = newString;
     _privateMethod();
   };
 
@@ -26,7 +26,7 @@ var myRevealingModule = (function() {
 })();
 
 
-console.log(myRevealingModule.privateVar); // undefined
+console.log(myRevealingModule._privateVar); // undefined
 console.log(myRevealingModule.something);
 
 myRevealingModule.publicMethod;

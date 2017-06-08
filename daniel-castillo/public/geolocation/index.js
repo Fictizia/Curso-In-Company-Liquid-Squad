@@ -1,7 +1,7 @@
 
 // 1 - Utiliza Google Maps para posicionar al usuario.
 
-getUserPosition = function() {
+var getUserPosition = function() {
 
   var longContainer = document.getElementById('longitude'),
       latContainer = document.getElementById('latitude'),
@@ -28,12 +28,12 @@ getUserPosition = function() {
       longContainer.textContent = 'longitude: ' + longitude;
       latContainer.textContent = 'latitude: ' + latitude;
 
-    })
+    }) 
   } else {
       errorContainer.textContent = 'Geolocation not supported';
-  }
+  };
 
-}
+};
 
 
 // 2 - Posiciona todos los vehículos de transporte (trenes y autobuses) de Los Angeles en el mapa.

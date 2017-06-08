@@ -4,7 +4,7 @@ var bitSocket = new WebSocket('wss://ws.blockchain.info/inv'),
   currencyString = '',
   lastCurrencyString = '';
 
-getContents = function() {
+function getContents() {
 
   bitSocket.onopen = function() {
 
@@ -29,15 +29,13 @@ getContents = function() {
         bitcoins += (satoshis / 100000000);
         bitcoins = Math.round(bitcoins * 1000000) / 1000000;
         document.getElementById('bitcoins').textContent = bitcoins;
-      }
-
-    }
+      };
+    };
   };
 
   setInterval(function(){ getCurrency(); }, 20000);
 
 };
-
 
 function getCurrency() {
 
@@ -57,11 +55,11 @@ function getCurrency() {
         + response[key].sell + response[key].symbol 
         + ' | ' + '(B): ' 
         + response[key].buy + response[key].symbol + ' | ';
-    })
+    });
 
     var lastCurrencyArray = Object.keys(response).map(function(key) {
       return key + ': ' + response[key].last + response[key].symbol + ' | ';
-    })
+    });
 
     var currencyString = currencyArray.join(''),
       lastCurrencyString = lastCurrencyArray.join(''),
@@ -70,6 +68,6 @@ function getCurrency() {
     currencyContainer.textContent = date + currencyString;
     lastCurrencyContainer.textContent = date + lastCurrencyString;
 
-  }
+  };
 
 };

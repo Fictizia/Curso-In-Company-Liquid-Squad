@@ -1,16 +1,3 @@
-var logger = (function() {
-  var log = '';
-  return {
-    add: function(msg) {
-      log += msg + '\n';
-    },
-    show: function() {
-      console.log(log);
-      log = '';
-    }
-  };
-})();
-
 var Iterator = function(items) {
   this.index = 0;
   this.items = items;
@@ -45,6 +32,18 @@ Iterator.prototype = {
   }
 };
 
+var logger = (function() {
+  var log = '';
+  return {
+    add: function(msg) {
+      log += msg + '\n';
+    },
+    show: function() {
+      console.log(log);
+      log = '';
+    }
+  };
+})();
 
 function test() {
   

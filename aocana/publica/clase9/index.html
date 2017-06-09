@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Clase Agenda</title>
+
+    <link src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></script>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="clase9.js"></script>
+    <style media="screen">
+      #main{width:800px;margin:auto;}
+      h1{font: 30px Verdana lighter;}
+    </style>
+  </head>
+  <body onload="listadoElementos()">
+    <center>
+    <section id="main">
+      <h1>Agenda Clase 9</h1>
+
+      <div class="" style="display:inline-grid;">
+        <label for="nombre">Nombre: </label><input type="text" name="nombre" id="nombre"><br><br>
+        <label for="nombre">Email: </label><input type="email" name="email" id="email"><br><br>
+        <label for="nombre">Teléfono: </label><input type="text" name="telefono" id="telefono"><br><br>
+      </div>
+      <div class="">
+        <button type="button" class="btn btn-primary" name="guardar" onclick="guardarDatos()">Guardar</button>
+        <button type="button" class="btn btn-success" name="editar" onclick="editarDatos()">Editar</button>
+        <button type="button" class="btn btn-danger" name="eliminar" onclick="eliminarElemento()">Eliminar</button>
+        <button type="button" class="btn btn-danger" name="eliminarTodos" onclick="eliminarTodos()">Eliminar Todos</button>
+      </div>
+    </section>
+  </center>
+
+  <div id="listado">
+  </div>
+  </body>
+</html>

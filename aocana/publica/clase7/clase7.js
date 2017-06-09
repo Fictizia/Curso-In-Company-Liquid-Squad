@@ -36,6 +36,7 @@ function cargarDatos(){
 
     document.getElementById("transferidos").innerText = cadenaBTC;
 
+    //se actualiza cada 15 minutos hacerlo en un interval, para el ejemplo mejor una vez y fuera
     xmlHttp.onreadystatechange = function() {
 
         if (xmlHttp.readyState === 4 && xmlHttp.status === 200) {

@@ -2,7 +2,7 @@
 
 ### Patrones y Arquitecturas alternativas
 
-- **[GoblinDB](GoblinDBRocks.github.io)**
+- **[GoblinDB](https://github.com/GoblinDBRocks/GoblinDB)**
   - Base de datos reactiva
   - Almacenamiento Asíncrono
   - Patrones de diseño (Namespace, Façade, etc...)

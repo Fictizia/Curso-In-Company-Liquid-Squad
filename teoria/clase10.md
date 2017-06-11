@@ -1100,6 +1100,4 @@ robot.masLento(); // Min alcanzado
 - Opcional:
     - usar el patrón *init-time branching* para gestionar los eventos
 
-```
-    // Tu solución
-```
+**[Solución](http://codepen.io/ulisesgascon/pen/df07197a30f1e387a6bfa5df99235cfc/)**

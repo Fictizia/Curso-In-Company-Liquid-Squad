@@ -405,8 +405,6 @@
 
 ### Ejercicios
 
-**2 -** Adaptamos el cajero para que funcione offline
+**1 -** Adaptamos el cajero para que funcione offline
 
-```javascript
-    // Tu solución
-```
+[Solución](../otros/cajero_manifest)

@@ -1,0 +1,16 @@
+CACHE MANIFEST
+    # versión 1.0
+
+    # SI CACHEAR
+    CACHE:
+    index.html
+    clase10.js
+
+    # Mostraremos offline.html cuando algo falle
+    FALLBACK:
+    index.html
+
+    # NO CACHEAR
+    NETWORK:
+    *
+    # * es todo aquello que no este en CACHE

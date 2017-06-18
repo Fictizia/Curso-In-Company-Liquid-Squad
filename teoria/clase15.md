@@ -3,7 +3,7 @@
 
 ### NPM
 
-![npm_logo](http://ohdoylerules.com/content/images/npm-logo.svg)
+![npm_logo](https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Npm-logo.svg/2000px-Npm-logo.svg.png)
 
 - **Instalar paquetes:**
   - global:

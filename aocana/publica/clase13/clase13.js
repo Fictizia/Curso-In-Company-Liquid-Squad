@@ -11,8 +11,8 @@ demo@novalido-.com, demo@-novalido.com
 function expresionesNIFNIE(){
   var expresionRegular = /(^([0-9]{8,8}\-[A-Z])|^)$/;
 
-  var nif = /^[0-9]{8}[A-Z]$/i;
-  var nie = /^[XYZ][0-9]{7}[A-Z]$/i;
+  var nif = /^[0-9]{8}([-]?)[A-Z]$/g;
+  var nie = /^[XYZ]{1}([-]?)[0-9]{7}[A-Z]$/g;
 
   var coincidencias1 = expresionRegular.test('12345678-A');
   var coincidencias2 = expresionRegular.test('A11223344');
@@ -22,4 +22,5 @@ function expresionesNIFNIE(){
 
 function comprobarPassword(){
   var expresionRegular = (?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$;
+  var exp = /((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,20})/gm;
 }

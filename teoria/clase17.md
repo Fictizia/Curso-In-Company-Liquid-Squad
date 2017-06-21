@@ -430,6 +430,6 @@ const config = {
 
 ### ¡Manos a la obra!
 
-**[awesome-webpack](https://github.com/webpack-contrib/awesome-webpack)**
-**[Guides](https://webpack.js.org/guides/)**
-**[Documentación](https://webpack.js.org/configuration/)**
+- **[awesome-webpack](https://github.com/webpack-contrib/awesome-webpack)**
+- **[Guides](https://webpack.js.org/guides/)**
+- **[Documentación](https://webpack.js.org/configuration/)**

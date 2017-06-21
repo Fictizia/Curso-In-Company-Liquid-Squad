@@ -3,7 +3,6 @@
 ![shieldsIO](https://img.shields.io/github/stars/Fictizia/Curso-In-Company-Liquid-Squad.svg)
 [![shieldsIO](https://img.shields.io/badge/Fictizia-Curso%20in%20Company-blue.svg)](http://www.fictizia.com/incompany/)
 
-
 # [Curso in company](http://www.fictizia.com/incompany/) para [Liquid Squad](https://liquid.delivery/)
 
 ![WideImg](http://www.fictizia.com/assets/styles/styleImgs/wideBox/wideImg-formacion-empresas.png)
@@ -35,7 +34,7 @@ Teoría | Recursos | Fecha
 [Clase 14](teoria/clase14.md) | [Clase 14](recursos/clase14.md) | Miércoles, 14/06/2017 17:00
 [Clase 15](teoria/clase15.md) | [Clase 15](recursos/clase15.md) | Viernes, 16/06/2017 15:30
 [Clase 16](teoria/clase16.md) | [Clase 16](recursos/clase16.md) | Lunes, 19/06/2017 17:00
-Clase 17 | Clase 17 | Miércoles, 21/06/2017 17:00
+[Clase 17](teoria/clase17.md) | [Clase 17](recursos/clase17.md) | Miércoles, 21/06/2017 17:00
 Clase 18 | Clase 18 | Lunes, 26/06/2017 17:00
 
 Temario

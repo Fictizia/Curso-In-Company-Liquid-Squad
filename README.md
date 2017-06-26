@@ -35,7 +35,7 @@ Teoría | Recursos | Fecha
 [Clase 15](teoria/clase15.md) | [Clase 15](recursos/clase15.md) | Viernes, 16/06/2017 15:30
 [Clase 16](teoria/clase16.md) | [Clase 16](recursos/clase16.md) | Lunes, 19/06/2017 17:00
 [Clase 17](teoria/clase17.md) | [Clase 17](recursos/clase17.md) | Miércoles, 21/06/2017 17:00
-[Clase 18](teoria/clase18.md) | Clase 18](recursos/clase18.md) | Lunes, 26/06/2017 17:00
+[Clase 18](teoria/clase18.md) | [Clase 18](recursos/clase18.md) | Lunes, 26/06/2017 17:00
 
 **[Extras!](teoria/extras.md)**
 
